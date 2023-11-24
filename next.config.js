@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['directus-production-1790.up.railway.app'],
+    remotePatterns: [
+      {
+        protocol: process.env.NEXT_PUBLIC_DIRECTUS_PROTOCOL,
+        hostname: process.env.NEXT_PUBLIC_DIRECTUS_DOMAIN,
+        port: '',
+        pathname: '/assets/**',
+      },
+    ],
   },
 }
 
