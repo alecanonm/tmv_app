@@ -14,6 +14,7 @@ const Covers = () => {
         return (
           <Cover
             key={cover.id}
+            id={cover.id}
             title={cover.name}
             img={imageUrl}
             width={600}
