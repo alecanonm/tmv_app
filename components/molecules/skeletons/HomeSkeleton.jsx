@@ -1,38 +1,35 @@
 import ContentLoader from 'react-content-loader'
 
 const HomeSkeleton = () => (
-  <section className='flex justify-center'>
-    <ContentLoader
-      className='grow p-7'
-      viewBox='0 0 500 300'
-      style={{ height: '85vh' }}
-      backgroundColor='#c7c7c7'
-      foregroundColor='#ecebeb'
-    >
-      <rect x='0' y='8' rx='0' ry='0' width='40' height='18' />
-      <circle cx='492' cy='16' r='8' />
-      <circle cx='472' cy='16' r='8' />
-      <rect x='362' y='8' rx='7' ry='7' width='96' height='16' />
-
-      <rect x='0' y='39' rx='0' ry='0' width='34' height='8' />
-      <rect x='50' y='39' rx='0' ry='0' width='36' height='8' />
-      <rect x='102' y='39' rx='0' ry='0' width='34' height='8' />
-      <rect x='152' y='39' rx='0' ry='0' width='34' height='8' />
-      <rect x='202' y='39' rx='0' ry='0' width='36' height='8' />
-      <rect x='254' y='39' rx='0' ry='0' width='34' height='8' />
-
-      <rect x='477' y='39' rx='0' ry='0' width='10' height='8' />
-
-      <rect x='19' y='64' rx='0' ry='0' width='465' height='155' />
-
-      <rect x='18' y='225' rx='0' ry='0' width='141' height='38' />
-      <rect x='182' y='225' rx='0' ry='0' width='141' height='38' />
-      <rect x='343' y='225' rx='0' ry='0' width='141' height='38' />
-      <rect x='18' y='270' rx='0' ry='0' width='141' height='38' />
-      <rect x='182' y='270' rx='0' ry='0' width='141' height='38' />
-      <rect x='343' y='270' rx='0' ry='0' width='141' height='38' />
-    </ContentLoader>
-  </section>
+  <div>
+    <section className='max-sm:hidden flex justify-center h-screen items-center'>
+      <ContentLoader
+        speed={2}
+        viewBox='0 0 600 200'
+        backgroundColor='#c7c7c7'
+        foregroundColor='#ecebeb'
+      >
+        <rect x='367' y='1' rx='11' ry='11' width='97' height='119' />
+        <rect x='117' y='23' rx='1' ry='1' width='189' height='7' />
+        <rect x='118' y='37' rx='1' ry='1' width='188' height='7' />
+        <rect x='118' y='49' rx='2' ry='2' width='189' height='7' />
+        <rect x='140' y='81' rx='10' ry='10' width='134' height='27' />
+        <rect x='211' y='92' rx='0' ry='0' width='0' height='2' />
+      </ContentLoader>
+    </section>
+    <section className='hidden max-sm:block pt-5'>
+      <ContentLoader
+        viewBox='0 0 380 420'
+        backgroundColor='#e3e3e3'
+        foregroundColor='#ecebeb'
+      >
+        <rect x='75' y='10' rx='2' ry='2' width='226' height='10' />
+        <rect x='76' y='26' rx='2' ry='2' width='225' height='9' />
+        <rect x='77' y='63' rx='6' ry='6' width='220' height='283' />
+        <rect x='76' y='42' rx='2' ry='2' width='225' height='9' />
+        <rect x='98' y='374' rx='10' ry='10' width='175' height='39' />
+      </ContentLoader>
+    </section>
+  </div>
 )
-
 export default HomeSkeleton
