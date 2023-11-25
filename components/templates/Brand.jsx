@@ -1,0 +1,32 @@
+'use client'
+
+import { useSuspenseQuery } from '@apollo/client'
+import { GET_VAPES } from '@utils'
+import { VapeCard } from '@components/molecules'
+const Brand = ({ params }) => {
+  const { data } = useSuspenseQuery(GET_VAPES, {
+    variables: {
+      brandId: params.id,
+    },
+  })
+
+  console.log(data)
+
+  const color = data.vapes[0]?.brand.color
+  const brandName = data.vapes[0]?.brand.name
+
+  return (
+    <section style={{ background: color }} className='h-full text-center'>
+      <h1 className='text-2xl font-bold text-white'>{brandName}</h1>
+      <div className='flex flex-wrap justify-center gap-5 m-10'>
+        {data.vapes.map((vape) => {
+          const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${vape?.images[0]?.vapes_images_id?.image.id}`
+
+          return <VapeCard key={vape.id} img={imageUrl} />
+        })}
+      </div>
+    </section>
+  )
+}
+
+export default Brand
