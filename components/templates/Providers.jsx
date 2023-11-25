@@ -1,6 +1,8 @@
 'use client'
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
+import { PrimeReactProvider, PrimeReactContext } from 'primereact/api'
+import 'primereact/resources/themes/lara-light-cyan/theme.css'
 
 const client = new ApolloClient({
   uri: `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}graphql`,
@@ -8,7 +10,11 @@ const client = new ApolloClient({
 })
 
 const Providers = ({ children }) => (
-  <ApolloProvider client={client}>{children}</ApolloProvider>
+  <ApolloProvider client={client}>
+    <PrimeReactProvider value={{ unstyled: false }}>
+      {children}
+    </PrimeReactProvider>
+  </ApolloProvider>
 )
 
 export default Providers

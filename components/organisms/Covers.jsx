@@ -3,7 +3,6 @@
 import { useSuspenseQuery } from '@apollo/client'
 import { Cover } from '@components/molecules'
 import { GET_COVERS } from '@utils'
-
 const Covers = () => {
   const { data } = useSuspenseQuery(GET_COVERS)
 

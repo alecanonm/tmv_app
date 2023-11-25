@@ -2,16 +2,18 @@
 import { CountButton, ImageWithFallback } from '@components/atoms'
 import { useState } from 'react'
 
-const VapeCard = ({ img }) => {
+const VapeCard = ({ img, flavor, setCountValue, countValue }) => {
   const [count, setCount] = useState(0)
 
   const increment = function increment() {
-    setCount(count + 1)
+    setCount(count + 10)
+    setCountValue(countValue + 10)
   }
 
   const decrement = function decrement() {
     if (count == 0) return
-    setCount(count - 1)
+    setCount(count - 10)
+    setCountValue(countValue - 10)
   }
 
   return (
@@ -25,7 +27,7 @@ const VapeCard = ({ img }) => {
         <ImageWithFallback src={img} width={200} height={200} alt='vape' />
       </figure>
       <section className='flex flex-col items-center bg-[#00000021] rounded-xl w-full'>
-        <h2 className='text-xl'>Cherry ice</h2>
+        <h2 className='text-xl'>{flavor}</h2>
         <h3>
           <strong className='text-[#46a832]'>3.5€</strong>
         </h3>
