@@ -1,9 +1,8 @@
 'use client'
-
 import { CountButton, ImageWithFallback } from '@components/atoms'
 import { useState } from 'react'
 
-const vapeCard = ({ img }) => {
+const VapeCard = ({ img }) => {
   const [count, setCount] = useState(0)
 
   const increment = function increment() {
@@ -11,6 +10,7 @@ const vapeCard = ({ img }) => {
   }
 
   const decrement = function decrement() {
+    if (count == 0) return
     setCount(count - 1)
   }
 
@@ -40,4 +40,4 @@ const vapeCard = ({ img }) => {
   )
 }
 
-export default vapeCard
+export default VapeCard
