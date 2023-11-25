@@ -6,7 +6,7 @@ import vaperLogo from '@public/assets/vaper-logo.png'
 const Header = () => {
   return (
     <header className='flex justify-between container mx-auto'>
-      <Link href='#howdy'>
+      <Link href='/'>
         <Image src={vaperLogo} alt='logo vaper' width={100} height={100} />
       </Link>
       <Navbar />

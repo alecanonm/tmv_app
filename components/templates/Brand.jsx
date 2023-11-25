@@ -11,7 +11,7 @@ const Brand = ({ params }) => {
     },
   })
 
-  console.log(data)
+  console.log(data.vapes[0])
 
   const color = data.vapes[0]?.brand.color
   const brandName = data.vapes[0]?.brand.name
@@ -19,7 +19,7 @@ const Brand = ({ params }) => {
   return (
     <div style={{ background: color }} className='flex grow'>
       <section className='flex flex-col gap-8 grow container mx-auto'>
-        <h1 className='text-2xl font-bold text-white text-center mt-8'>
+        <h1 className='text-4xl font-bold text-white text-center mt-8'>
           {brandName}
         </h1>
         <div className='flex flex-wrap justify-center gap-5 grow mb-8'>

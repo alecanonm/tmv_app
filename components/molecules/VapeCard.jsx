@@ -8,13 +8,13 @@ const vapeCard = ({ img }) => {
         <div className='border-2 grow rounded-lg text-center'>0</div>
         <CountButton color={'bg-green-500'} content='+' />
       </div>
-      <figure className='h-full flex items-center'>
+      <figure className='h-full flex items-center bg-[#00000021] rounded-xl'>
         <ImageWithFallback src={img} width={200} height={200} alt='vape' />
       </figure>
-      <section className='flex flex-col items-center'>
-        <h2>Cherry ice</h2>
+      <section className='flex flex-col items-center bg-[#00000021] rounded-xl w-full'>
+        <h2 className='text-xl'>Cherry ice</h2>
         <h3>
-          <strong>3.5€</strong>
+          <strong className='text-[#46a832]'>3.5€</strong>
         </h3>
       </section>
     </article>
