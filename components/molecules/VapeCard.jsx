@@ -1,12 +1,25 @@
+'use client'
+
 import { CountButton, ImageWithFallback } from '@components/atoms'
+import { useState } from 'react'
 
 const vapeCard = ({ img }) => {
+  const [count, setCount] = useState(0)
+
+  const increment = function increment() {
+    setCount(count + 1)
+  }
+
+  const decrement = function decrement() {
+    setCount(count - 1)
+  }
+
   return (
     <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-xl p-4'>
       <div className='flex gap-2 justify-around w-full'>
-        <CountButton color={'bg-red-500'} content='-' />
-        <div className='border-2 grow rounded-lg text-center'>0</div>
-        <CountButton color={'bg-green-500'} content='+' />
+        <CountButton color={'bg-red-500'} content='-' onClick={decrement} />
+        <div className='border-2 grow rounded-lg text-center'>{count}</div>
+        <CountButton color={'bg-green-500'} content='+' onClick={increment} />
       </div>
       <figure className='h-full flex items-center bg-[#00000021] rounded-xl'>
         <ImageWithFallback src={img} width={200} height={200} alt='vape' />
@@ -17,6 +30,12 @@ const vapeCard = ({ img }) => {
           <strong className='text-[#46a832]'>3.5€</strong>
         </h3>
       </section>
+      <div
+        role='button'
+        className='font-bold bg-yellow-500 px-2 p-1 rounded-md'
+      >
+        Descripcion
+      </div>
     </article>
   )
 }
