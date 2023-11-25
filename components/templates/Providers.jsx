@@ -1,7 +1,7 @@
 'use client'
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { PrimeReactProvider, PrimeReactContext } from 'primereact/api'
+import { PrimeReactProvider } from 'primereact/api'
 import 'primereact/resources/themes/lara-light-cyan/theme.css'
 
 const client = new ApolloClient({
