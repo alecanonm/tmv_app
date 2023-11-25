@@ -1,7 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import fallbackImage from '@public/assets/vaper-logo.png'
 
 const ImageWithFallback = ({

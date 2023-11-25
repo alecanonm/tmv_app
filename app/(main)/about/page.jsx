@@ -5,7 +5,11 @@ export const metadata = {
 
 const AboutPage = ({ params, searchParams }) => {
   console.log({ params, searchParams })
-  return <h1>About</h1>
+  return (
+    <div className='container mx-auto'>
+      <h1>About</h1>
+    </div>
+  )
 }
 
 export default AboutPage

@@ -9,20 +9,21 @@ const Covers = () => {
 
   return (
     <>
-      {data?.brands?.map((cover) => {
-        const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${cover.image?.id}`
-        return (
+      {data?.brands?.map((cover) => (
+        <section
+          key={cover.id}
+          style={{ background: cover.color }}
+          className='flex grow'
+        >
           <Cover
-            key={cover.id}
             id={cover.id}
             title={cover.name}
-            img={imageUrl}
+            imgId={cover.image?.id}
             width={600}
             height={600}
-            bgColor={cover.color}
           />
-        )
-      })}
+        </section>
+      ))}
     </>
   )
 }

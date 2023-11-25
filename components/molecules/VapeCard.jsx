@@ -1,21 +1,23 @@
-import { ImageWithFallback } from 'components/atoms'
+import { CountButton, ImageWithFallback } from '@components/atoms'
 
 const vapeCard = ({ img }) => {
   return (
-    <div className='flex flex-col justify-center items-center bg-white rounded-xl'>
-      <div className='flex justify-around w-full m-2'>
-        <button className='bg-red-500 w-12 rounded-full'>-</button>
-        <div className='border-2 w-32'>0</div>
-        <button className='bg-green-500 w-12 rounded-full'>+</button>
+    <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-xl p-4'>
+      <div className='flex gap-2 justify-around w-full'>
+        <CountButton color={'bg-red-500'} content='-' />
+        <div className='border-2 grow rounded-lg text-center'>0</div>
+        <CountButton color={'bg-green-500'} content='+' />
       </div>
-      <figure className=' w-[200px] h-[100%] flex items-center'>
+      <figure className='h-full flex items-center'>
         <ImageWithFallback src={img} width={200} height={200} alt='vape' />
       </figure>
-      <div className=''>
-        <h1 className=''>Cherry ice</h1>
-        <h3 className=''>3.5€</h3>
-      </div>
-    </div>
+      <section className='flex flex-col items-center'>
+        <h2>Cherry ice</h2>
+        <h3>
+          <strong>3.5€</strong>
+        </h3>
+      </section>
+    </article>
   )
 }
 

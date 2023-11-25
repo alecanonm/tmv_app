@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
-import vaperLogo from '@public/assets/vaper-logo.png'
 
 const navMotion = {
   visible: {
@@ -41,9 +39,6 @@ const Navbar = () => {
 
   return (
     <nav className='bg-[#ffffff] flex justify-evenly max-sm:justify-around items-center text-black'>
-      <Link href='#howdy'>
-        <Image src={vaperLogo} alt='logo vaper' width={100} height={100} />
-      </Link>
       {!matches && (
         <ul className='flex gap-10'>
           <li>

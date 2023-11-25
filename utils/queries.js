@@ -15,9 +15,13 @@ export const GET_COVERS = gql`
     }
   }
 `
+
 export const GET_VAPES = gql`
   query ($brandId: String!) {
-    vapes(filter: { brand: { id: { _eq: $brandId } } }) {
+    vapes(
+      filter: { status: { _eq: "published" }, brand: { id: { _eq: $brandId } } }
+      sort: ["sort"]
+    ) {
       id
       description
       images {
