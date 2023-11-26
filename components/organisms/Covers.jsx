@@ -1,14 +1,12 @@
 'use client'
 
-import { useSuspenseQuery } from '@apollo/client'
 import { Cover } from '@components/molecules'
-import { GET_COVERS } from '@utils'
+import useQueries from '@hooks/useQueries'
 const Covers = () => {
-  const { data } = useSuspenseQuery(GET_COVERS)
-
+  const { cover } = useQueries()
   return (
     <>
-      {data?.brands?.map((cover) => (
+      {cover?.brands?.map((cover) => (
         <section
           key={cover.id}
           style={{ background: cover.color }}

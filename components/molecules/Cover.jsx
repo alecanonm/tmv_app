@@ -11,7 +11,7 @@ const Cover = ({ id, title, imgId, width, height }) => {
   }
 
   return (
-    <section className='max-sm:flex-col flex justify-center items-center h-screen text-white container mx-auto'>
+    <article className='max-sm:flex-col flex justify-center items-center h-screen text-white container mx-auto'>
       <div className='flex flex-col gap-10'>
         <h1 className='uppercase font-bold text-4xl text-center'>{title}</h1>
         <button
@@ -35,7 +35,7 @@ const Cover = ({ id, title, imgId, width, height }) => {
       >
         Saber mas
       </button>
-    </section>
+    </article>
   )
 }
 

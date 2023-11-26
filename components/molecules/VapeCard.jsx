@@ -1,8 +1,9 @@
 'use client'
+
 import { CountButton, ImageWithFallback } from '@components/atoms'
 import { useState } from 'react'
 
-const VapeCard = ({ img, flavor, setCountValue, countValue }) => {
+const VapeCard = ({ img, flavor, setCountValue, countValue, unitPrice }) => {
   const [count, setCount] = useState(0)
 
   const increment = function increment() {
@@ -20,16 +21,18 @@ const VapeCard = ({ img, flavor, setCountValue, countValue }) => {
     <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-xl p-4'>
       <div className='flex gap-2 justify-around w-full'>
         <CountButton color={'bg-red-500'} content='-' onClick={decrement} />
-        <div className='border-2 grow rounded-lg text-center'>{count}</div>
+        <div role='cell' className='border-2 grow rounded-lg text-center'>
+          {count}
+        </div>
         <CountButton color={'bg-green-500'} content='+' onClick={increment} />
       </div>
       <figure className='h-full flex items-center bg-[#00000021] rounded-xl'>
         <ImageWithFallback src={img} width={200} height={200} alt='vape' />
       </figure>
       <section className='flex flex-col items-center bg-[#00000021] rounded-xl w-full'>
-        <h2 className='text-xl'>{flavor}</h2>
+        <h2 className=' mx-2 text-center'>{flavor}</h2>
         <h3>
-          <strong className='text-[#46a832]'>3.5€</strong>
+          <strong className='text-[#46a832]'>{unitPrice * 10}€</strong>
         </h3>
       </section>
       <div

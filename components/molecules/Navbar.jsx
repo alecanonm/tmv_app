@@ -38,16 +38,16 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className='bg-[#ffffff] flex justify-evenly max-sm:justify-around items-center text-black'>
+    <nav className='flex  max-sm:justify-around items-center text-black font-semibold'>
       {!matches && (
         <ul className='flex gap-10'>
-          <li>
+          <li className='hover:underline hover:underline-offset-8'>
             <Link href='/'>Novedades</Link>
           </li>
-          <li>
+          <li className='hover:underline hover:underline-offset-8'>
             <Link href='/'>Marcas</Link>
           </li>
-          <li>
+          <li className='hover:underline hover:underline-offset-8'>
             <Link href='/about'>Sobre Nosotros</Link>
           </li>
         </ul>
@@ -81,50 +81,32 @@ const Navbar = () => {
           initial={{ opacity: 0, x: 100 }}
           className='fixed flex bg-[#ffffff] z-10 bottom-0 left-0 w-full h-screen items-center justify-center'
         >
-          <motion.section
+          <motion.ul
             variants={navMotion}
             animate='visible'
             initial='hidden'
             className='flex flex-col gap-12 text-lg'
           >
-            <motion.a
+            <motion.li
               onClick={() => {
                 setToggled((prev) => !prev)
               }}
               variants={itemMotion}
-              href='/'
             >
-              Marcas
-            </motion.a>
-            <motion.a variants={itemMotion} href='/project'>
-              Novedades
-            </motion.a>
-            {/* <motion.span
-          onClick={() => {
-            setToggled((prev) => !prev);
-          }}
-          variants={itemMotion}
-        >
-          <Link href={"login"}> Iniciar sesion</Link>
-        </motion.span> */}
-            {/* <motion.span
-          onClick={() => {
-            setToggled((prev) => !prev);
-          }}
-          variants={itemMotion}
-        >
-          <Link href={"register"}>Registarse</Link>
-        </motion.span> */}
-            <motion.a
+              <Link href='/'> Marcas</Link>
+            </motion.li>
+            <motion.li variants={itemMotion}>
+              <Link href='/project'>Novedades</Link>
+            </motion.li>
+            <motion.li
               variants={itemMotion}
               onClick={() => {
                 setToggled((prev) => !prev)
               }}
-              href='/'
             >
-              Sobre nosotros
-            </motion.a>
-          </motion.section>
+              <Link href='/about'>Sobre nosotros</Link>
+            </motion.li>
+          </motion.ul>
         </motion.section>
       )}
     </nav>

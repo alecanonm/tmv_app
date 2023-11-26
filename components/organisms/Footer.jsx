@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
     <footer className='flex items-center justify-center container mx-auto'>
-      <h3 className='font-semibold text-lg'>© Take my vape</h3>
+      <h3 className='text-lg'>
+        <strong>© Take my vape</strong>
+      </h3>
     </footer>
   )
 }
