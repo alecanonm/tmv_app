@@ -32,6 +32,7 @@ const Brand = ({ params }) => {
           {vape.vapes.map((vape) => {
             const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${vape?.images[0]?.vapes_images_id?.image.id}`
             const flavor = vape?.flavor.name
+            const description = vape?.description
             return (
               <VapeCard
                 key={vape.id}
@@ -40,6 +41,7 @@ const Brand = ({ params }) => {
                 setCountValue={setCountValue}
                 countValue={countValue}
                 unitPrice={unitPrice}
+                description={description}
               />
             )
           })}
