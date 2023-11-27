@@ -1,7 +1,9 @@
 'use client'
 
-import { CountButton, ImageWithFallback } from '@components/atoms'
 import { useState } from 'react'
+import { CountButton, ImageWithFallback } from '@components/atoms'
+import { Backdrop } from '@components/atoms'
+import { CardModal } from '.'
 
 const VapeCard = ({
   img,
@@ -28,29 +30,15 @@ const VapeCard = ({
   return (
     <>
       {showDescription && (
-        <div className=' fixed flex items-center justify-center bg-[#000000c0] h-full top-0 w-full z-50 backdrop-blur-sm'>
-          <div className=' bg-white flex flex-col items-center   w-2/5 p-5 rounded-lg max-sm:w-full'>
-            <div
-              role='button'
-              className='font-bold self-end  bg-yellow-500 px-2 p-1 rounded-md'
-              onClick={() => setShowDescription(!showDescription)}
-            >
-              x
-            </div>
-            <h1 className='text-4xl text-center'>
-              <strong>{flavor}</strong>
-            </h1>
-            <figure>
-              <ImageWithFallback
-                src={img}
-                width={300}
-                height={300}
-                alt={flavor}
-              />
-            </figure>
-            <p>{description}</p>
-          </div>
-        </div>
+        <Backdrop>
+          <CardModal
+            img={img}
+            flavor={flavor}
+            description={description}
+            showDescription={showDescription}
+            setShowDescription={setShowDescription}
+          />
+        </Backdrop>
       )}
       <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-xl p-4'>
         <div className='flex gap-2 justify-around w-full'>
