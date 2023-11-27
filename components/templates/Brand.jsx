@@ -5,7 +5,8 @@ import { VapeCard } from '@components/molecules'
 import { ProgressBar } from 'primereact/progressbar'
 import { useSuspenseQuery } from '@apollo/client'
 import { GET_VAPES } from '@utils'
-
+import logoBox from '@public/assets/box.png'
+import { CustomButton } from '@components/atoms'
 const Brand = ({ params }) => {
   const [countValue, setCountValue] = useState(0)
 
@@ -29,7 +30,7 @@ const Brand = ({ params }) => {
   }
 
   return (
-    <div style={{ background: color }} className='flex flex-col grow'>
+    <div style={{ background: color }} className='flex flex-col-reverse grow'>
       <summary className='flex flex-col gap-8 grow container mx-auto'>
         <h1 className='text-4xl font-bold text-white text-center mt-8'>
           {brandName}
@@ -53,7 +54,7 @@ const Brand = ({ params }) => {
           })}
         </section>
       </summary>
-      <div className='sticky flex  justify-center bottom-0 bg-[#070707a0] backdrop-blur-sm w-full p-5  '>
+      <div className='sticky flex  justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5  '>
         <ProgressBar
           value={countValue}
           displayValueTemplate={valueTemplate}
@@ -61,6 +62,14 @@ const Brand = ({ params }) => {
           className=' w-96 h-5'
         />
       </div>
+      <CustomButton
+        src={logoBox}
+        alt='Box to vapes'
+        width={90}
+        height={90}
+        xasies='right-0'
+        yaxies='bottom-8'
+      />
     </div>
   )
 }
