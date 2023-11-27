@@ -1,6 +1,6 @@
-const CountButton = ({ color, content, onClick }) => (
+const CountButton = ({ color, children, onClick }) => (
   <button className={`w-12 rounded-lg ${color}`} onClick={onClick}>
-    <span className='text-white font-bold'>{content}</span>
+    <span className='text-white font-bold'>{children}</span>
   </button>
 )
 

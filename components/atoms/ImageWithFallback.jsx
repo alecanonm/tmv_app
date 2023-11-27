@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import Image from 'next/image'
 import fallbackImage from '@public/assets/vaper-logo.png'
 
@@ -17,12 +17,14 @@ const ImageWithFallback = ({
   }, [src])
 
   return (
-    <Image
-      alt={alt}
-      onError={setError}
-      src={error ? fallback : src}
-      {...props}
-    />
+    <Suspense fallback={<p className='text-red-900'>Loadign...</p>}>
+      <Image
+        src={error ? fallback : src}
+        alt={alt}
+        onError={setError}
+        {...props}
+      />
+    </Suspense>
   )
 }
 

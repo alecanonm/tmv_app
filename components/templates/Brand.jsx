@@ -3,16 +3,22 @@
 import { useState } from 'react'
 import { VapeCard } from '@components/molecules'
 import { ProgressBar } from 'primereact/progressbar'
-import useQueries from '@hooks/useQueries'
+import { useSuspenseQuery } from '@apollo/client'
+import { GET_VAPES } from '@utils'
 
 const Brand = ({ params }) => {
   const [countValue, setCountValue] = useState(0)
-  const { vape, price } = useQueries(params)
 
-  const color = vape.vapes[0]?.brand.color
-  const brandName = vape.vapes[0]?.brand.name
-  const quantity = price?.prices[0]?.quantity
-  const unitPrice = price?.prices[0]?.unit_price
+  const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
+    variables: {
+      brandId: params.id,
+    },
+  })
+
+  const color = dataVapes.vapes[0]?.brand.color
+  const brandName = dataVapes.vapes[0]?.brand.name
+  const quantity = dataVapes?.prices[0]?.quantity
+  const unitPrice = dataVapes?.prices[0]?.unit_price
 
   const valueTemplate = function valueTemplate() {
     return (
@@ -29,14 +35,14 @@ const Brand = ({ params }) => {
           {brandName}
         </h1>
         <section className='flex flex-wrap justify-center gap-5 grow mb-8'>
-          {vape.vapes.map((vape) => {
-            const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${vape?.images[0]?.vapes_images_id?.image.id}`
+          {dataVapes.vapes.map((vape) => {
+            const imageInfo = vape?.images[0]?.vapes_images_id
             const flavor = vape?.flavor.name
             const description = vape?.description
             return (
               <VapeCard
                 key={vape.id}
-                img={imageUrl}
+                imageInfo={imageInfo}
                 flavor={flavor}
                 setCountValue={setCountValue}
                 countValue={countValue}

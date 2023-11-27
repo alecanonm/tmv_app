@@ -16,19 +16,6 @@ export const GET_COVERS = gql`
   }
 `
 
-export const GET_PRICES = gql`
-  query ($brandId: String!) {
-    prices(
-      filter: { status: { _eq: "published" }, brand: { id: { _eq: $brandId } } }
-      sort: ["sort"]
-    ) {
-      id
-      quantity
-      unit_price
-    }
-  }
-`
-
 export const GET_VAPES = gql`
   query ($brandId: String!) {
     vapes(
@@ -41,7 +28,11 @@ export const GET_VAPES = gql`
         vapes_images_id {
           image {
             id
+            width
+            height
           }
+          width
+          height
         }
       }
       brand {
@@ -60,6 +51,14 @@ export const GET_VAPES = gql`
         code
         name
       }
+    }
+    prices(
+      filter: { status: { _eq: "published" }, brand: { id: { _eq: $brandId } } }
+      sort: ["sort"]
+    ) {
+      id
+      quantity
+      unit_price
     }
   }
 `

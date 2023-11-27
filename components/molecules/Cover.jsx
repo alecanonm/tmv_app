@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import fallbackImage from '@public/assets/vaper-logo.png'
 import { useRouter } from 'next/navigation'
+import { ImageWithFallback } from '@components/atoms'
+import fallbacklImage from '@public/assets/vaper-logo.png'
 
-const Cover = ({ id, title, imgId, width, height }) => {
+const Cover = ({ id, title, imgId }) => {
   const router = useRouter()
   const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${imgId}`
 
@@ -11,7 +11,7 @@ const Cover = ({ id, title, imgId, width, height }) => {
   }
 
   return (
-    <article className='max-sm:flex-col flex justify-center items-center h-screen text-white container mx-auto'>
+    <article className='max-sm:flex-col flex gap-4 justify-center items-center text-white container mx-auto h-[calc(100vh-100px)]'>
       <div className='flex flex-col gap-10'>
         <h1 className='uppercase font-bold text-4xl text-center'>{title}</h1>
         <button
@@ -22,11 +22,11 @@ const Cover = ({ id, title, imgId, width, height }) => {
         </button>
       </div>
       <figure>
-        <Image
-          src={imgId ? imageUrl : fallbackImage}
+        <ImageWithFallback
+          src={imgId ? imageUrl : fallbacklImage}
+          width={600}
+          height={600}
           alt={title}
-          width={width}
-          height={height}
         />
       </figure>
       <button

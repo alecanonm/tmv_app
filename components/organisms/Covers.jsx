@@ -1,24 +1,21 @@
 'use client'
 
+import { useSuspenseQuery } from '@apollo/client'
 import { Cover } from '@components/molecules'
-import useQueries from '@hooks/useQueries'
+import { GET_COVERS } from '@utils'
+
 const Covers = () => {
-  const { cover } = useQueries()
+  const { data } = useSuspenseQuery(GET_COVERS)
+
   return (
     <>
-      {cover?.brands?.map((cover) => (
+      {data?.brands?.map((cover) => (
         <section
           key={cover.id}
           style={{ background: cover.color }}
           className='flex grow'
         >
-          <Cover
-            id={cover.id}
-            title={cover.name}
-            imgId={cover.image?.id}
-            width={600}
-            height={600}
-          />
+          <Cover id={cover.id} title={cover.name} imgId={cover.image?.id} />
         </section>
       ))}
     </>

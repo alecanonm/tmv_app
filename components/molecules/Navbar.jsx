@@ -38,7 +38,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className='flex  max-sm:justify-around items-center text-black font-semibold'>
+    <nav className='flex items-center text-black font-semibold'>
       {!matches && (
         <ul className='flex gap-10'>
           <li className='hover:underline hover:underline-offset-8'>
