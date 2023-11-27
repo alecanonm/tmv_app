@@ -14,6 +14,9 @@ const MainLayout = ({ children }) => {
         heigth={60}
         alt='whatsapp'
         yaxies='bottom-12'
+        url={
+          'https://wa.me/34613646137?text=Hi,%20i%20want%20information%20about%20your%20product!'
+        }
       />
     </>
   )

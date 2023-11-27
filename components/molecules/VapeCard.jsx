@@ -65,7 +65,7 @@ const VapeCard = ({
         <section className='flex flex-col items-center bg-[#00000021] rounded-lg w-full py-[0.15rem] px-2'>
           <h2 className='text-center'>{flavor}</h2>
           <h3>
-            <strong className='text-[#46a832]'>{unitPrice * 10}€</strong>
+            <strong className='text-[#46a832]'>{unitPrice}€</strong>
           </h3>
         </section>
         <div
