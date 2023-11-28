@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Backdrop } from '@components/atoms'
+import { PayPalButtons } from '@paypal/react-paypal-js'
 
 const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
   const [showModal, setShowModal] = useState(false)
@@ -20,6 +21,7 @@ const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
             <h1 className='text-3xl font-bold text-white text-center'>
               Coming soon!
             </h1>
+            <PayPalButtons />
             <button
               className='bg-red-500 text-white rounded-lg p-2'
               onClick={() => setShowModal(!showModal)}

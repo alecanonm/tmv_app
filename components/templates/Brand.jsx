@@ -59,7 +59,7 @@ const Brand = ({ params }) => {
           className='container h-6 bg-slate-200'
         />
         <span className='absolute right-[48%] top-5 text-red-500'>
-          {globalCounter}
+          {globalCounter}/{quantity}
         </span>
       </div>
       <CustomButton
