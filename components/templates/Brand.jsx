@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import logoBox from '@public/assets/box.png'
@@ -7,9 +8,10 @@ import { useSuspenseQuery } from '@apollo/client'
 import { GET_VAPES } from '@utils'
 import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
+import { useEffect } from 'react'
 
 const Brand = ({ params }) => {
-  const { globalCounter } = useVapesContext()
+  const { globalCounter, setGlobalCounter } = useVapesContext()
 
   const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
     variables: {
@@ -21,6 +23,10 @@ const Brand = ({ params }) => {
   const brandName = dataVapes.vapes[0]?.brand.name
   const quantity = dataVapes?.prices[0]?.quantity
   const unitPrice = dataVapes?.prices[0]?.unit_price
+
+  useEffect(() => {
+    setGlobalCounter(0)
+  }, [])
 
   return (
     <div style={{ background: color }} className='flex flex-col-reverse grow'>
@@ -52,7 +58,7 @@ const Brand = ({ params }) => {
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
-        <span className='absolute right-1/2 top-5 text-red-500'>
+        <span className='absolute right-[48%] top-5 text-red-500'>
           {globalCounter}
         </span>
       </div>
