@@ -59,7 +59,7 @@ const Brand = ({ params }) => {
           value={countValue}
           displayValueTemplate={valueTemplate}
           color='#46a832'
-          className=' w-96 h-5'
+          className=' w-96 h-5 bg-slate-200'
         />
       </div>
       <CustomButton

@@ -11,7 +11,7 @@ const CardModal = ({
     <summary className=' bg-white flex flex-col items-center   w-2/5 p-5 rounded-lg max-sm:w-full'>
       <div
         role='button'
-        className='font-bold self-end  bg-yellow-500 px-2 p-1 rounded-md'
+        className='font-bold self-end  bg-yellow-500 px-3 p-1 rounded-md'
         onClick={() => setShowDescription(!showDescription)}
       >
         x
