@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import { Tag } from '@components/atoms'
 
 const Brand = ({ params }) => {
-  const { globalCounter, setGlobalCounter, setVapesPerBrand, vapesPerBrand } =
+  const { globalCounter, setGlobalCounter, setVapesPerBrand } =
     useVapesContext()
 
   const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
