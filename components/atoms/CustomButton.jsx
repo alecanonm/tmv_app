@@ -17,18 +17,19 @@ const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
       {' '}
       {showModal && (
         <Backdrop>
-          <div className='flex flex-col justify-center items-center gap-5'>
+          <div className='flex flex-col justify-center items-center gap-5 h-[60vh]'>
             <h1 className='text-3xl font-bold text-white text-center'>
               Coming soon!
             </h1>
-
-            <PayPalButtons
-              style={{ color: 'blue' }}
-              // createOrder={() => {}}
-              // onCancel={() => {}}
-              // onApprove={() => {}}
-            />
-
+            <div className='flex flex-col justify-center grow'>
+              <PayPalButtons
+                className='overflow-y-auto'
+                style={{ color: 'blue' }}
+                // createOrder={() => {}}
+                // onCancel={() => {}}
+                // onApprove={() => {}}
+              />
+            </div>
             <button
               className='bg-red-500 text-white rounded-lg p-2'
               onClick={() => setShowModal(!showModal)}

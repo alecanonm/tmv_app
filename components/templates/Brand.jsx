@@ -5,13 +5,14 @@ import logoBox from '@public/assets/box.png'
 import { VapeCard } from '@components/molecules'
 import { ProgressBar } from 'primereact/progressbar'
 import { useSuspenseQuery } from '@apollo/client'
-import { GET_VAPES } from '@utils'
+import { GET_VAPES, vapesPerBrandMapper } from '@utils'
 import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 
 const Brand = ({ params }) => {
-  const { globalCounter, setGlobalCounter } = useVapesContext()
+  const { globalCounter, setGlobalCounter, setVapesPerBrand } =
+    useVapesContext()
 
   const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
     variables: {
@@ -27,6 +28,10 @@ const Brand = ({ params }) => {
   useEffect(() => {
     setGlobalCounter(0)
   }, [])
+
+  useEffect(() => {
+    setVapesPerBrand(vapesPerBrandMapper(dataVapes))
+  }, [dataVapes])
 
   return (
     <div style={{ background: color }} className='flex flex-col-reverse grow'>
@@ -51,14 +56,14 @@ const Brand = ({ params }) => {
           })}
         </section>
       </summary>
-      <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5 relative'>
+      <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5'>
         <ProgressBar
           value={(globalCounter * 100) / quantity}
           displayValueTemplate={() => null}
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
-        <span className='absolute right-[48%] bg-transparent backdrop-blur-lg top-5 text-black'>
+        <span className='absolute right-[46%] bg-transparent backdrop-blur-lg top-5 text-black'>
           <strong>
             {globalCounter}/{quantity}
           </strong>
