@@ -5,7 +5,7 @@ import logoBox from '@public/assets/box.png'
 import { VapeCard } from '@components/molecules'
 import { ProgressBar } from 'primereact/progressbar'
 import { useSuspenseQuery } from '@apollo/client'
-import { GET_VAPES, vapesPerBrandMapper } from '@utils'
+import { GET_VAPES } from '@utils'
 import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
@@ -52,7 +52,7 @@ const Brand = ({ params }) => {
                 key={vape.id}
                 imageInfo={imageInfo}
                 flavor={flavor}
-                unitPrice={unitPrice}
+                // unitPrice={unitPrice}
                 description={description}
               />
             )

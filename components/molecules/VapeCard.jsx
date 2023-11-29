@@ -5,7 +5,7 @@ import { ImageWithFallback } from '@components/atoms'
 import { Backdrop } from '@components/atoms'
 import { CardModal, VapesCounter } from '.'
 
-const VapeCard = ({ imageInfo, flavor, unitPrice, description }) => {
+const VapeCard = ({ imageInfo, flavor, description }) => {
   const [showDescription, setShowDescription] = useState(false)
 
   const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${imageInfo?.image.id}`
