@@ -11,7 +11,7 @@ import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 
 const Brand = ({ params }) => {
-  const { globalCounter, setGlobalCounter, setVapesPerBrand, vapesPerBrand } =
+  const { globalCounter, setGlobalCounter, setVapesPerBrand } =
     useVapesContext()
 
   const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
@@ -30,9 +30,7 @@ const Brand = ({ params }) => {
   }, [])
 
   useEffect(() => {
-    dataVapes?.vapes.map((vape) => {
-      setVapesPerBrand((prev) => [...prev, vape])
-    })
+    setVapesPerBrand(vapesPerBrandMapper(dataVapes))
   }, [dataVapes])
 
   return (
