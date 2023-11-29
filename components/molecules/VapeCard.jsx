@@ -27,7 +27,7 @@ const VapeCard = ({ imageInfo, flavor, unitPrice, description }) => {
         <div className='flex gap-2 justify-around w-full'>
           <VapesCounter />
         </div>
-        <figure className='h-full flex justify-center items-center bg-[#00000021] rounded-lg w-full'>
+        <figure className='h-full flex justify-center items-center bg-[#dedcdc52] rounded-lg w-full'>
           <ImageWithFallback
             src={imageUrl}
             width={imageInfo?.width || 200}
@@ -35,10 +35,12 @@ const VapeCard = ({ imageInfo, flavor, unitPrice, description }) => {
             alt={flavor}
           />
         </figure>
-        <section className='flex flex-col items-center bg-[#00000021] rounded-lg w-full py-[0.15rem] px-2'>
-          <h2 className='text-center'>{flavor}</h2>
+        <section className='flex flex-col items-center bg-[#ffffff21] rounded-lg w-full py-[0.15rem] px-2'>
+          <h2 className='text-center'>
+            <strong>{flavor}</strong>
+          </h2>
           <h3>
-            <strong className='text-[#46a832]'>{unitPrice}€</strong>
+            {/* <strong className='text-[#46a832]'>{unitPrice}€</strong> */}
           </h3>
         </section>
         <div

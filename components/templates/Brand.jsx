@@ -9,6 +9,7 @@ import { GET_VAPES, vapesPerBrandMapper } from '@utils'
 import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
+import { Tag } from '@components/atoms'
 
 const Brand = ({ params }) => {
   const { globalCounter, setGlobalCounter, setVapesPerBrand, vapesPerBrand } =
@@ -59,6 +60,7 @@ const Brand = ({ params }) => {
         </section>
       </summary>
       <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5'>
+        <Tag price={unitPrice} />
         <ProgressBar
           value={(globalCounter * 100) / quantity}
           displayValueTemplate={() => null}
@@ -76,7 +78,7 @@ const Brand = ({ params }) => {
         alt='Box to vapes'
         width={90}
         height={90}
-        xasies='right-0'
+        xasies='right-[7px]'
         yaxies='bottom-8'
       />
     </div>
