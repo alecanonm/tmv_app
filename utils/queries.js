@@ -59,6 +59,9 @@ export const GET_VAPES = gql`
       id
       quantity
       unit_price
+      brand {
+        id
+      }
     }
   }
 `
