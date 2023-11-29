@@ -21,7 +21,14 @@ const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
             <h1 className='text-3xl font-bold text-white text-center'>
               Coming soon!
             </h1>
-            <PayPalButtons />
+
+            <PayPalButtons
+              style={{ color: 'blue' }}
+              // createOrder={() => {}}
+              // onCancel={() => {}}
+              // onApprove={() => {}}
+            />
+
             <button
               className='bg-red-500 text-white rounded-lg p-2'
               onClick={() => setShowModal(!showModal)}

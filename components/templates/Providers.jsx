@@ -14,7 +14,12 @@ const client = new ApolloClient({
 const Providers = ({ children }) => (
   <ApolloProvider client={client}>
     <PrimeReactProvider value={{ unstyled: false }}>
-      <PayPalScriptProvider>
+      <PayPalScriptProvider
+        options={{
+          clientId:
+            'AY0pdI4y8A5nC3lrlOo28Z_McoBSEIklxXGPDJCgo8CsMH6nxqpDLYrIUlU8YnFsSs-dSzqVlXRhe28d',
+        }}
+      >
         <VapesProvider>{children}</VapesProvider>
       </PayPalScriptProvider>
     </PrimeReactProvider>

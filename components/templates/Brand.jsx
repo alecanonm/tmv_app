@@ -58,8 +58,10 @@ const Brand = ({ params }) => {
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
-        <span className='absolute right-[48%] top-5 text-red-500'>
-          {globalCounter}/{quantity}
+        <span className='absolute right-[48%] bg-transparent backdrop-blur-lg top-5 text-black'>
+          <strong>
+            {globalCounter}/{quantity}
+          </strong>
         </span>
       </div>
       <CustomButton

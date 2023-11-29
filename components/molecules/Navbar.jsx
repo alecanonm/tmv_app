@@ -41,12 +41,12 @@ const Navbar = () => {
     <nav className='flex items-center text-black font-semibold'>
       {!matches && (
         <ul className='flex gap-10'>
-          <li className='hover:underline hover:underline-offset-8'>
+          {/* <li className='hover:underline hover:underline-offset-8'>
             <Link href='/'>Novedades</Link>
           </li>
           <li className='hover:underline hover:underline-offset-8'>
             <Link href='/'>Marcas</Link>
-          </li>
+          </li> */}
           <li className='hover:underline hover:underline-offset-8'>
             <Link href='/about'>Sobre Nosotros</Link>
           </li>
@@ -87,17 +87,17 @@ const Navbar = () => {
             initial='hidden'
             className='flex flex-col gap-12 text-lg'
           >
-            <motion.li
+            {/* <motion.li
               onClick={() => {
                 setToggled((prev) => !prev)
               }}
               variants={itemMotion}
             >
               <Link href='/'> Marcas</Link>
-            </motion.li>
-            <motion.li variants={itemMotion}>
+            </motion.li> */}
+            {/* <motion.li variants={itemMotion}>
               <Link href='/project'>Novedades</Link>
-            </motion.li>
+            </motion.li> */}
             <motion.li
               variants={itemMotion}
               onClick={() => {
