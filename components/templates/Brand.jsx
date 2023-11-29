@@ -58,7 +58,9 @@ const Brand = ({ params }) => {
         </section>
       </summary>
       <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5'>
-        <Tag price={unitPrice} />
+        <div className='relative'>
+          <Tag price={unitPrice} />
+        </div>
         <ProgressBar
           value={(globalCounter * 100) / quantity}
           displayValueTemplate={() => null}
