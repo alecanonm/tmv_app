@@ -3,14 +3,15 @@ import { ImageWithFallback } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { getCurrencyEUR } from '@utils'
 import { useParams } from 'next/navigation'
+import trash from '@public/assets/delete.png'
 
 const OrderTable = () => {
   const { vapesToBox } = useVapesContext()
   const { id: brandId } = useParams()
 
   return (
-    <div className='overflow-x-auto w-full'>
-      <table className='text-white w-full min-w-[30rem]'>
+    <div className='overflow-x-auto w-full sm:w-[150%]'>
+      <table className='text-white w-full min-w-[30rem] '>
         <thead>
           <tr>
             <th>Imagen</th>
@@ -18,10 +19,9 @@ const OrderTable = () => {
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Total</th>
-            <th>Opciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='text-center'>
           {vapesToBox
             .filter((vape) => vape.brand.id === brandId)
             .map((vape) => {
@@ -37,17 +37,26 @@ const OrderTable = () => {
                         <ImageWithFallback
                           src={imageId ? imageUrl : fallbacklImage}
                           alt={flavor}
-                          width={50}
-                          height={50}
+                          width={70}
+                          height={70}
                         />
                       </figure>
                     </td>
-                    <td>{flavor}</td>
+                    <td>
+                      <strong>{flavor}</strong>
+                    </td>
                     <td>{qty}</td>
                     <td>{getCurrencyEUR(vape.price)}</td>
                     <td>{getCurrencyEUR(qty * vape.price)}</td>
                     <td>
-                      <button type='button'>Eliminar</button>
+                      <div role='button'>
+                        <ImageWithFallback
+                          src={trash}
+                          alt='delete'
+                          width={30}
+                          height={30}
+                        />
+                      </div>
                     </td>
                   </tr>
                 )

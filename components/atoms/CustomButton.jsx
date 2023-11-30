@@ -23,26 +23,26 @@ const CustomButton = ({ width, height, src, alt, xaxies, yaxies, url }) => {
     <>
       {showModal && (
         <Backdrop>
-          <div className='flex flex-col justify-center items-center gap-5 h-[60vh] w-modal border-2'>
+          <div className='flex flex-col justify-center items-center gap-5 h-[60vh] w-modal'>
             {showTable ? (
               <OrderTable />
             ) : (
-              <p className='text-white'>No hay NI MIERDA!</p>
+              <p className='text-white'>La caja esta vacia...</p>
             )}
             <div className='flex flex-col justify-center grow'>
               <PayPalButtons
                 className='overflow-y-auto'
-                style={{ color: 'blue' }}
+                style={{ color: 'blue', layout: 'horizontal' }}
                 // createOrder={() => {}}
                 // onCancel={() => {}}
                 // onApprove={() => {}}
               />
             </div>
             <button
-              className='bg-red-500 text-white rounded-lg p-2'
+              className='text-white text-lg '
               onClick={() => setShowModal(!showModal)}
             >
-              Close
+              Cerrar
             </button>
           </div>
         </Backdrop>
