@@ -12,7 +12,7 @@ const Box = ({ setShowModal, showModal }) => {
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter > 0
 
   return (
-    <summary className='flex flex-col justify-center items-center h-[80vh] w-modal'>
+    <summary className='flex flex-col justify-center items-center gap-5 h-[80vh] w-modal'>
       {showTable ? (
         <>
           <OrderTable />

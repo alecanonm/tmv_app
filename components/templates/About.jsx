@@ -1,9 +1,9 @@
 const About = () => (
   <div className='container mx-auto flex flex-col gap-4 justify-center items-center h-full'>
-    <h1 className='text-5xl uppercase'>
+    <h1 className='text-3xl sm:text-5xl uppercase pt-10'>
       <strong>Take my vape</strong>
     </h1>
-    <p className='text-center'>
+    <p className='text-justify px-10 pb-10 leading-6 text-slate-600'>
       Nos presentamos, somos un nueva tienda online hasta el momento dedicada a
       la venta de productos de vapeo desechables al por mayor, queremos
       facilitar a esa gente emprendedora que desea sacar beneficios vendiendo
@@ -14,7 +14,7 @@ const About = () => (
       beneficio posible es lo que nos centramos en brindar a nuestros preciados
       clientes. Aumentar la variedad y el catalogo a peticion de nuestros
       clientes son nuevas oportunidades para llegar a más publico asi que no
-      dudes en contactarnos en nuestras redes sociales , numero de contacto ,
+      dudes en contactarnos en nuestras redes sociales, numero de contacto,
       whatsapp o email para cualquier peticion acerca de alguna marca y producto
       en especifico que tengas en mente, estaremos encantados en buscar un
       proveedor con la mejor calidad y precio para ti. Somos nosotros unos

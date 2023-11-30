@@ -49,7 +49,12 @@ const OrderTable = () => {
                     <td>{getCurrencyEUR(vape.price)}</td>
                     <td>{getCurrencyEUR(qty * vape.price)}</td>
                     <td>
-                      <div role='button'>
+                      <div
+                        role='button'
+                        onClick={() => {
+                          console.log('hola')
+                        }}
+                      >
                         <ImageWithFallback
                           src={trash}
                           alt='delete'
