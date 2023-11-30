@@ -16,7 +16,7 @@ const Box = ({ setShowModal, showModal }) => {
       {showTable ? (
         <>
           <OrderTable />
-          <div className='flex flex-col justify-center grow'>
+          <div className='flex flex-col justify-center py-5'>
             <PayPalButtons
               className='overflow-y-auto'
               style={{ color: 'blue', layout: 'horizontal' }}
