@@ -1,25 +1,30 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Backdrop } from '@components/atoms'
 import { PayPalButtons } from '@paypal/react-paypal-js'
+import { useVapesContext } from '@contexts/VapesContext'
 
 const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
   const [showModal, setShowModal] = useState(false)
+  const { vapesPerBrand, vapesToBox } = useVapesContext()
 
   const navigateTo = () => {
     url ? (window.location.href = url) : setShowModal(!showModal)
   }
 
+  useEffect(() => {
+    console.log(vapesToBox)
+  }, [vapesToBox])
+
   return (
     <>
-      {' '}
       {showModal && (
         <Backdrop>
           <div className='flex flex-col justify-center items-center gap-5 h-[60vh]'>
             <h1 className='text-3xl font-bold text-white text-center'>
-              Coming soon!
+              {vapesPerBrand?.vapes[0]?.flavor.name}
             </h1>
             <div className='flex flex-col justify-center grow'>
               <PayPalButtons

@@ -9,7 +9,7 @@ import { GET_VAPES, vapesPerBrandMapper } from '@utils'
 import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
-import { Tag } from '@components/atoms'
+import { Tag } from '@components/atoms/'
 
 const Brand = ({ params }) => {
   const { globalCounter, setGlobalCounter, setVapesPerBrand } =
@@ -52,6 +52,7 @@ const Brand = ({ params }) => {
                 flavor={flavor}
                 // unitPrice={unitPrice}
                 description={description}
+                id={vape.id}
               />
             )
           })}

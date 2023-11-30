@@ -5,7 +5,7 @@ import { ImageWithFallback } from '@components/atoms'
 import { Backdrop } from '@components/atoms'
 import { CardModal, VapesCounter } from '.'
 
-const VapeCard = ({ imageInfo, flavor, description }) => {
+const VapeCard = ({ imageInfo, flavor, description, id }) => {
   const [showDescription, setShowDescription] = useState(false)
 
   const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${imageInfo?.image.id}`
@@ -25,7 +25,7 @@ const VapeCard = ({ imageInfo, flavor, description }) => {
       )}
       <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-lg p-4 w-[70vw] sm:w-auto'>
         <div className='flex gap-2 justify-around w-full'>
-          <VapesCounter />
+          <VapesCounter id={id} />
         </div>
         <figure className='h-full flex justify-center items-center bg-[#dedcdc52] rounded-lg w-full'>
           <ImageWithFallback
