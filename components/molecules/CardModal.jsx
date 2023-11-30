@@ -8,7 +8,7 @@ const CardModal = ({
   showDescription,
 }) => {
   return (
-    <summary className='bg-white flex flex-col items-center p-5 rounded-lg w-[90vw] md:w-3/5 lg:w-2/4 xl:w-2/5 max-w-2xl'>
+    <summary className='bg-white flex flex-col items-center p-5 rounded-lg w-modal'>
       <div
         role='button'
         className='font-bold self-end bg-yellow-500 px-3 p-1 rounded-md'

@@ -1,19 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
+import {
+  GET_VAPES,
+  LS_GLOBAL_COUNTERS,
+  LS_VAPES_TO_BOX,
+  getLocalStorage,
+} from '@utils'
 import logoBox from '@public/assets/box.png'
 import { VapeCard } from '@components/molecules'
 import { ProgressBar } from 'primereact/progressbar'
 import { useSuspenseQuery } from '@apollo/client'
-import { GET_VAPES, vapesPerBrandMapper } from '@utils'
 import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 import { Tag } from '@components/atoms/'
 
 const Brand = ({ params }) => {
-  const { globalCounter, setGlobalCounter, setVapesPerBrand } =
-    useVapesContext()
+  const {
+    globalCounter,
+    globalQuantity,
+    setGlobalQuantity,
+    setVapesPerBrand,
+    setGlobalCounter,
+    setVapesToBox,
+  } = useVapesContext()
 
   const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
     variables: {
@@ -23,15 +34,19 @@ const Brand = ({ params }) => {
 
   const color = dataVapes.vapes[0]?.brand.color
   const brandName = dataVapes.vapes[0]?.brand.name
-  const quantity = dataVapes?.prices[0]?.quantity
   const unitPrice = dataVapes?.prices[0]?.unit_price
+  const brandGlobalCounter = globalCounter.find(
+    (gc) => gc.brandId === params.id,
+  )
 
   useEffect(() => {
-    setGlobalCounter(0)
+    setGlobalQuantity(dataVapes?.prices[0]?.quantity)
   }, [])
 
   useEffect(() => {
-    setVapesPerBrand(vapesPerBrandMapper(dataVapes))
+    setVapesPerBrand(dataVapes)
+    setGlobalCounter(getLocalStorage(LS_GLOBAL_COUNTERS) || [])
+    setVapesToBox(getLocalStorage(LS_VAPES_TO_BOX) || [])
   }, [dataVapes])
 
   return (
@@ -50,7 +65,6 @@ const Brand = ({ params }) => {
                 key={vape.id}
                 imageInfo={imageInfo}
                 flavor={flavor}
-                // unitPrice={unitPrice}
                 description={description}
                 id={vape.id}
               />
@@ -63,14 +77,16 @@ const Brand = ({ params }) => {
           <Tag price={unitPrice} />
         </div>
         <ProgressBar
-          value={(globalCounter * 100) / quantity}
+          value={
+            ((brandGlobalCounter?.globalCounter || 0) * 100) / globalQuantity
+          }
           displayValueTemplate={() => null}
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
         <span className='absolute right-[46%] bg-transparent backdrop-blur-lg top-5 text-black'>
           <strong>
-            {globalCounter}/{quantity}
+            {brandGlobalCounter?.globalCounter || 0}/{globalQuantity}
           </strong>
         </span>
       </div>
@@ -79,7 +95,7 @@ const Brand = ({ params }) => {
         alt='Box to vapes'
         width={90}
         height={90}
-        xasies='right-[7px]'
+        xaxies='right-[7px]'
         yaxies='bottom-8'
       />
     </div>

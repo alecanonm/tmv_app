@@ -26,9 +26,9 @@ const Cover = ({ id, title, imgId }) => {
       <figure>
         <ImageWithFallback
           src={imgId ? imageUrl : fallbacklImage}
+          alt={title}
           width={600}
           height={600}
-          alt={title}
         />
       </figure>
       <button

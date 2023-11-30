@@ -3,6 +3,10 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+  .w-modal {
+    @apply w-[90vw] md:w-3/5 lg:w-2/4 xl:w-2/5 max-w-2xl;
+  }
+
   #nprogress {
     pointer-events: none;
   }

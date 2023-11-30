@@ -1,31 +1,34 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Backdrop } from '@components/atoms'
 import { PayPalButtons } from '@paypal/react-paypal-js'
+import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
+import { useParams } from 'next/navigation'
 
-const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
+const CustomButton = ({ width, height, src, alt, xaxies, yaxies, url }) => {
   const [showModal, setShowModal] = useState(false)
-  const { vapesPerBrand, vapesToBox } = useVapesContext()
+  const { id: brandId } = useParams()
+  const { globalCounter } = useVapesContext()
+  const showTable =
+    globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter > 0
 
   const navigateTo = () => {
     url ? (window.location.href = url) : setShowModal(!showModal)
   }
 
-  useEffect(() => {
-    console.log(vapesToBox)
-  }, [vapesToBox])
-
   return (
     <>
       {showModal && (
         <Backdrop>
-          <div className='flex flex-col justify-center items-center gap-5 h-[60vh]'>
-            <h1 className='text-3xl font-bold text-white text-center'>
-              {vapesPerBrand?.vapes[0]?.flavor.name}
-            </h1>
+          <div className='flex flex-col justify-center items-center gap-5 h-[60vh] w-modal border-2'>
+            {showTable ? (
+              <OrderTable />
+            ) : (
+              <p className='text-white'>No hay NI MIERDA!</p>
+            )}
             <div className='flex flex-col justify-center grow'>
               <PayPalButtons
                 className='overflow-y-auto'
@@ -46,8 +49,8 @@ const CustomButton = ({ width, height, src, alt, xasies, yaxies, url }) => {
       )}
       <div
         role='button'
-        className={`fixed max-sm:${xasies} ${
-          xasies || 'left-5'
+        className={`fixed max-sm:${xaxies} ${
+          xaxies || 'left-5'
         } ${yaxies} rounded-full`}
         onClick={navigateTo}
       >

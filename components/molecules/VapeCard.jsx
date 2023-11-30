@@ -24,9 +24,7 @@ const VapeCard = ({ imageInfo, flavor, description, id }) => {
         </Backdrop>
       )}
       <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-lg p-4 w-[70vw] sm:w-auto'>
-        <div className='flex gap-2 justify-around w-full'>
-          <VapesCounter id={id} />
-        </div>
+        <VapesCounter id={id} />
         <figure className='h-full flex justify-center items-center bg-[#dedcdc52] rounded-lg w-full'>
           <ImageWithFallback
             src={imageUrl}
@@ -39,9 +37,6 @@ const VapeCard = ({ imageInfo, flavor, description, id }) => {
           <h2 className='text-center'>
             <strong>{flavor}</strong>
           </h2>
-          <h3>
-            {/* <strong className='text-[#46a832]'>{unitPrice}€</strong> */}
-          </h3>
         </section>
         <div
           role='button'

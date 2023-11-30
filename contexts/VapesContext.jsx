@@ -3,8 +3,10 @@
 import { createContext, useContext, useState } from 'react'
 
 const vapesContextDefaultValues = {
-  globalCounter: 0,
+  globalCounter: [],
   setGlobalCounter: () => {},
+  globalQuantity: 0,
+  setGlobalQuantity: () => {},
   vapesPerBrand: [],
   setVapesPerBrand: () => {},
   vapesToBox: [],
@@ -16,7 +18,8 @@ const VapesContext = createContext(vapesContextDefaultValues)
 export const useVapesContext = () => useContext(VapesContext)
 
 export const VapesProvider = ({ children }) => {
-  const [globalCounter, setGlobalCounter] = useState(0)
+  const [globalCounter, setGlobalCounter] = useState([])
+  const [globalQuantity, setGlobalQuantity] = useState(0)
   const [vapesPerBrand, setVapesPerBrand] = useState([])
   const [vapesToBox, setVapesToBox] = useState([])
 
@@ -25,6 +28,8 @@ export const VapesProvider = ({ children }) => {
       value={{
         globalCounter,
         setGlobalCounter,
+        globalQuantity,
+        setGlobalQuantity,
         vapesPerBrand,
         setVapesPerBrand,
         vapesToBox,
