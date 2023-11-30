@@ -73,9 +73,6 @@ const Brand = ({ params }) => {
         </section>
       </summary>
       <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5'>
-        <div className='relative'>
-          <Tag price={unitPrice} />
-        </div>
         <ProgressBar
           value={
             ((brandGlobalCounter?.globalCounter || 0) * 100) / globalQuantity
@@ -89,6 +86,7 @@ const Brand = ({ params }) => {
             {brandGlobalCounter?.globalCounter || 0}/{globalQuantity}
           </strong>
         </span>
+        <Tag price={unitPrice} />
       </div>
       <CustomButton
         src={logoBox}
