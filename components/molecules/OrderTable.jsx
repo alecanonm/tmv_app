@@ -4,10 +4,37 @@ import { useVapesContext } from '@contexts/VapesContext'
 import { getCurrencyEUR } from '@utils'
 import { useParams } from 'next/navigation'
 import trash from '@public/assets/delete.png'
+import { LS_VAPES_TO_BOX, setLocalStorage, LS_GLOBAL_COUNTERS } from '@utils'
 
 const OrderTable = () => {
-  const { vapesToBox } = useVapesContext()
+  const { vapesToBox, setVapesToBox, setGlobalCounter } = useVapesContext()
   const { id: brandId } = useParams()
+
+  const handleDelete = function handleDelete(id) {
+    const vape = vapesToBox.find((vape) => vape.id === id)
+    const newVape = {
+      ...vape,
+      quantity: 0,
+    }
+
+    const resVPB = [...vapesToBox.filter((pv) => pv.id !== id), newVape]
+    setLocalStorage(LS_VAPES_TO_BOX, resVPB)
+    setVapesToBox(resVPB)
+
+    setGlobalCounter((prev) => {
+      const brandGC = prev.find((gc) => gc.brandId === brandId)
+      const newGlobalCounter = {
+        brandId,
+        globalCounter: brandGC.globalCounter - vape.quantity,
+      }
+      const resGC = [
+        ...prev.filter((gc) => gc.brandId !== brandId),
+        newGlobalCounter,
+      ]
+      setLocalStorage(LS_GLOBAL_COUNTERS, resGC)
+      return resGC
+    })
+  }
 
   return (
     <div className='overflow-x-auto w-full sm:w-[150%]'>
@@ -49,12 +76,7 @@ const OrderTable = () => {
                     <td>{getCurrencyEUR(vape.price)}</td>
                     <td>{getCurrencyEUR(qty * vape.price)}</td>
                     <td>
-                      <div
-                        role='button'
-                        onClick={() => {
-                          console.log('hola')
-                        }}
-                      >
+                      <div role='button' onClick={() => handleDelete(vape.id)}>
                         <ImageWithFallback
                           src={trash}
                           alt='delete'
