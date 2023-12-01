@@ -6,9 +6,9 @@ import handVape from '@public/assets/handVape.svg'
 
 const Header = () => {
   return (
-    <header className='flex justify-between container mx-auto px-6 sm:px-0 h-[87px]'>
+    <header className='flex justify-between container mx-auto px-6 sm:px-0 py-1'>
       <Link href='/'>
-        <Image src={handVape} alt='logo vaper' width={110} height={100} />
+        <Image src={handVape} alt='logo vaper' width={70} height={100} />
       </Link>
       <Navbar />
     </header>
