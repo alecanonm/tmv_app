@@ -20,7 +20,9 @@ const Box = ({ setShowModal, showModal }) => {
             <PayPalButtons
               className='overflow-y-auto'
               style={{ color: 'blue', layout: 'horizontal' }}
-              // createOrder={() => {}}
+              createOrder={(data, actions) => {
+                console.log(data, actions)
+              }}
               // onCancel={() => {}}
               // onApprove={() => {}}
             />
