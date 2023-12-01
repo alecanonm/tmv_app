@@ -1,7 +1,7 @@
 import { Navbar } from '@components/molecules'
 import Image from 'next/image'
 import Link from 'next/link'
-import vaperLogo from '@public/assets/vaper-logo.png'
+// import vaperLogo from '@public/assets/vaper-logo.png'
 import handVape from '@public/assets/handVape.svg'
 
 const Header = () => {
