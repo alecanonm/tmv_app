@@ -95,9 +95,14 @@ const Navbar = () => {
             >
               <Link href='/'> Marcas</Link>
             </motion.li> */}
-            {/* <motion.li variants={itemMotion}>
-              <Link href='/project'>Novedades</Link>
-            </motion.li> */}
+            <motion.li
+              variants={itemMotion}
+              onClick={() => {
+                setToggled((prev) => !prev)
+              }}
+            >
+              <Link href='/'>Inicio</Link>
+            </motion.li>
             <motion.li
               variants={itemMotion}
               onClick={() => {

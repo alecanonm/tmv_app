@@ -33,11 +33,11 @@ const VapeCard = ({ imageInfo, flavor, description, id }) => {
             alt={flavor}
           />
         </figure>
-        <section className='flex flex-col items-center bg-[#ffffff21] rounded-lg w-full py-[0.15rem] px-2'>
+        <summary className='flex flex-col items-center bg-[#ffffff21] rounded-lg w-full py-[0.15rem] px-2'>
           <h2 className='text-center'>
             <strong>{flavor}</strong>
           </h2>
-        </section>
+        </summary>
         <div
           role='button'
           className='font-bold bg-yellow-500 px-2 p-1 rounded-lg w-full sm:w-auto text-center'
