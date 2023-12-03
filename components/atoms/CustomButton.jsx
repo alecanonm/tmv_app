@@ -5,6 +5,7 @@ import { useState, useRef } from 'react'
 import { Backdrop } from '@components/atoms'
 import { Box } from '@components/molecules'
 import { Toast } from 'primereact/toast'
+import { useVapesContext } from '@contexts/VapesContext'
 
 const CustomButton = ({
   width,
@@ -14,16 +15,21 @@ const CustomButton = ({
   xaxies,
   yaxies,
   url,
-  globalQuantity,
   vapesCounter,
 }) => {
   const [showModal, setShowModal] = useState(false)
+  const { globalQuantity } = useVapesContext()
 
   const show = () => {
     toast.current.show({
       severity: 'warn',
       summary: 'No has alcanzado la cantidad mínima',
-      detail: 'Para poder comprar debes alcanzar la cantidad mínima de vapes',
+      detail: (
+        <p>
+          Para poder comprar debes alcanzar la cantidad mínima de{' '}
+          <strong>{globalQuantity} vapes.</strong>
+        </p>
+      ),
     })
   }
 
@@ -53,7 +59,7 @@ const CustomButton = ({
       >
         <Image src={src} alt={alt} width={width} height={height} />
       </div>
-      <Toast ref={toast} />
+      <Toast ref={toast} className='w-[90vw] sm:w-auto' />
     </>
   )
 }
