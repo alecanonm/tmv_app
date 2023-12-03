@@ -6,6 +6,9 @@ import { getCurrencyEUR } from '@utils'
 import { useParams } from 'next/navigation'
 import { LS_VAPES_TO_BOX, setLocalStorage, LS_GLOBAL_COUNTERS } from '@utils'
 
+const getCurrentVapes = (vapes, brandId) =>
+  vapes.filter((vape) => vape.brand.id === brandId)
+
 const OrderTable = () => {
   const { vapesToBox, setVapesToBox, setGlobalCounter } = useVapesContext()
   const { id: brandId } = useParams()
@@ -72,7 +75,10 @@ const OrderTable = () => {
                       <td className='min-w-[10rem]'>
                         <strong>{flavor}</strong>
                       </td>
-                      <td>{qty}</td>
+                      <td>
+                        {qty}
+                        <em>/u</em>
+                      </td>
                       <td className='min-w-[6rem]'>
                         {getCurrencyEUR(vape.price)}
                       </td>
@@ -100,13 +106,22 @@ const OrderTable = () => {
           </tbody>
         </table>
       </div>
-      <p className='text-lg font-bold text-center'>
-        <strong className='text-xl'>Total:</strong>{' '}
-        {getCurrencyEUR(
-          vapesToBox
-            .filter((vape) => vape.brand.id === brandId)
-            .reduce((acc, vape) => acc + vape.price * vape.quantity, 0),
-        )}
+      <p className='text-lg text-center'>
+        <strong>Total:</strong>{' '}
+        <span className='text-[1.4rem] font-light'>
+          {getCurrencyEUR(
+            getCurrentVapes(vapesToBox, brandId).reduce(
+              (acc, vape) => acc + vape.price * vape.quantity,
+              0,
+            ),
+          )}
+        </span>{' '}
+        (
+        {getCurrentVapes(vapesToBox, brandId).reduce(
+          (acc, vape) => acc + vape.quantity,
+          0,
+        )}{' '}
+        vapes)
       </p>
     </div>
   )
