@@ -60,7 +60,7 @@ const OrderTable = () => {
               return (
                 qty > 0 && (
                   <tr key={vape.id}>
-                    <td>
+                    <td className='min-w-[6rem]'>
                       <ImageWithFallback
                         src={imageId ? imageUrl : fallbacklImage}
                         alt={flavor}
@@ -68,13 +68,17 @@ const OrderTable = () => {
                         height={55}
                       />
                     </td>
-                    <td>
+                    <td className='min-w-[10rem]'>
                       <strong>{flavor}</strong>
                     </td>
                     <td>{qty}</td>
-                    <td>{getCurrencyEUR(vape.price)}</td>
-                    <td>{getCurrencyEUR(qty * vape.price)}</td>
-                    <td>
+                    <td className='min-w-[6rem]'>
+                      {getCurrencyEUR(vape.price)}
+                    </td>
+                    <td className='min-w-[6rem]'>
+                      {getCurrencyEUR(qty * vape.price)}
+                    </td>
+                    <td className='min-w-[3rem]'>
                       <button
                         role='button'
                         type='button'
