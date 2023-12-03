@@ -8,7 +8,7 @@ import { VapeSummary, VapesCounter } from '.'
 const VapeCard = ({ imageInfo, flavor, description, id }) => {
   const [showDescription, setShowDescription] = useState(false)
 
-  const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${imageInfo?.image.id}`
+  const imageUrl = `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}assets/${imageInfo?.image?.id}`
 
   return (
     <>
@@ -25,7 +25,7 @@ const VapeCard = ({ imageInfo, flavor, description, id }) => {
       )}
       <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-lg p-4 w-[70vw] sm:w-auto'>
         <VapesCounter id={id} />
-        <div className='h-full flex justify-center items-center bg-brandGrayBG rounded-lg w-full'>
+        <div className='h-full flex justify-center items-center bg-brandGrayBG rounded-lg w-full min-w-[200px]'>
           <ImageWithFallback
             src={imageUrl}
             width={imageInfo?.width || 200}
