@@ -45,7 +45,8 @@ const OrderTable = () => {
             <th className='bg-brandGrayBG p-2'>Nombre</th>
             <th className='bg-brandGrayBG p-2'>Cantidad</th>
             <th className='bg-brandGrayBG p-2'>Precio</th>
-            <th className='bg-brandGrayBG p-2 rounded-r-lg'>Total</th>
+            <th className='bg-brandGrayBG p-2'>Total</th>
+            <th className='bg-brandGrayBG p-2 rounded-r-lg'></th>
           </tr>
         </thead>
         <tbody className='text-center'>
