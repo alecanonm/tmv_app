@@ -15,7 +15,6 @@ import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 import { Tag } from '@components/atoms/'
-
 const Brand = ({ params }) => {
   const {
     globalCounter,
@@ -49,6 +48,8 @@ const Brand = ({ params }) => {
     setVapesToBox(getLocalStorage(LS_VAPES_TO_BOX) || [])
   }, [dataVapes])
 
+  const vapesCounter = brandGlobalCounter?.globalCounter
+
   return (
     <div style={{ background: color }} className='flex flex-col-reverse grow'>
       <summary className='flex flex-col gap-8 grow container mx-auto'>
@@ -74,20 +75,21 @@ const Brand = ({ params }) => {
       </summary>
       <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5'>
         <ProgressBar
-          value={
-            ((brandGlobalCounter?.globalCounter || 0) * 100) / globalQuantity
-          }
+          value={((vapesCounter || 0) * 100) / globalQuantity}
           displayValueTemplate={() => null}
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
         <span className='absolute right-[46%] bg-transparent backdrop-blur-lg top-5 text-black'>
           <strong>
-            {brandGlobalCounter?.globalCounter || 0}/{globalQuantity}
+            {vapesCounter || 0}/{globalQuantity}
           </strong>
         </span>
-        <Tag price={unitPrice} />
+        <div>
+          <Tag price={unitPrice} />
+        </div>
       </div>
+
       <CustomButton
         src={logoBox}
         alt='Box to vapes'
@@ -95,6 +97,8 @@ const Brand = ({ params }) => {
         height={90}
         xaxies='right-[7px]'
         yaxies='bottom-8'
+        globalQuantity={globalQuantity}
+        vapesCounter={vapesCounter}
       />
     </div>
   )
