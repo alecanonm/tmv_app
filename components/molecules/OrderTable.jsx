@@ -37,15 +37,15 @@ const OrderTable = () => {
   }
 
   return (
-    <div className='overflow-x-auto w-full sm:w-[150%]'>
-      <table className='text-white w-full min-w-[30rem] '>
+    <div className='overflow-x-auto w-full'>
+      <table className='text-black w-full min-w-[30rem]'>
         <thead>
           <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Total</th>
+            <th className='bg-brandGrayBG p-2 rounded-l-lg'>Imagen</th>
+            <th className='bg-brandGrayBG p-2'>Nombre</th>
+            <th className='bg-brandGrayBG p-2'>Cantidad</th>
+            <th className='bg-brandGrayBG p-2'>Precio</th>
+            <th className='bg-brandGrayBG p-2 rounded-r-lg'>Total</th>
           </tr>
         </thead>
         <tbody className='text-center'>
@@ -60,14 +60,12 @@ const OrderTable = () => {
                 qty > 0 && (
                   <tr key={vape.id}>
                     <td>
-                      <figure>
-                        <ImageWithFallback
-                          src={imageId ? imageUrl : fallbacklImage}
-                          alt={flavor}
-                          width={70}
-                          height={70}
-                        />
-                      </figure>
+                      <ImageWithFallback
+                        src={imageId ? imageUrl : fallbacklImage}
+                        alt={flavor}
+                        width={55}
+                        height={55}
+                      />
                     </td>
                     <td>
                       <strong>{flavor}</strong>
@@ -76,14 +74,18 @@ const OrderTable = () => {
                     <td>{getCurrencyEUR(vape.price)}</td>
                     <td>{getCurrencyEUR(qty * vape.price)}</td>
                     <td>
-                      <div role='button' onClick={() => handleDelete(vape.id)}>
+                      <button
+                        role='button'
+                        type='button'
+                        onClick={() => handleDelete(vape.id)}
+                      >
                         <ImageWithFallback
                           src={trash}
                           alt='delete'
-                          width={30}
-                          height={30}
+                          width={20}
+                          height={20}
                         />
-                      </div>
+                      </button>
                     </td>
                   </tr>
                 )

@@ -1,6 +1,6 @@
 import { ImageWithFallback } from '@components/atoms'
 
-const CardModal = ({
+const VapeSummary = ({
   img,
   flavor,
   description,
@@ -8,7 +8,7 @@ const CardModal = ({
   showDescription,
 }) => {
   return (
-    <summary className='bg-white flex flex-col items-center p-5 rounded-lg w-modal'>
+    <summary className='flex flex-col items-center'>
       <div
         role='button'
         className='font-bold self-end bg-yellow-500 px-3 p-1 rounded-md'
@@ -19,12 +19,10 @@ const CardModal = ({
       <h1 className='text-3xl md:text-4xl text-center'>
         <strong>{flavor}</strong>
       </h1>
-      <figure>
-        <ImageWithFallback src={img} width={300} height={300} alt={flavor} />
-      </figure>
+      <ImageWithFallback src={img} width={300} height={300} alt={flavor} />
       <p>{description}</p>
     </summary>
   )
 }
 
-export default CardModal
+export default VapeSummary

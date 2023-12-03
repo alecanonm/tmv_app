@@ -14,6 +14,7 @@ module.exports = {
       },
       colors: {
         brandButton: '#7474745d',
+        brandGrayBG: '#dedcdc52',
       },
     },
   },

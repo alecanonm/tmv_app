@@ -1,7 +1,7 @@
 export { default as Navbar } from './Navbar'
 export { default as Cover } from './Cover'
 export { default as VapeCard } from './VapeCard'
-export { default as CardModal } from './CardModal'
+export { default as VapeSummary } from './VapeSummary'
 export { default as VapesCounter } from './VapesCounter'
 export { default as OrderTable } from './OrderTable'
 export { default as Box } from './Box'

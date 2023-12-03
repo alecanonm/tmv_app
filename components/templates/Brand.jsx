@@ -52,7 +52,7 @@ const Brand = ({ params }) => {
   return (
     <div style={{ background: color }} className='flex flex-col-reverse grow'>
       <summary className='flex flex-col gap-8 grow container mx-auto'>
-        <h1 className='text-3xl md:text-4xl font-bold text-white text-center mt-8'>
+        <h1 className='text-3xl md:text-4xl font-bold text-white text-center mt-8 px-[6rem] md:px-0'>
           {brandName}
         </h1>
         <section className='flex flex-wrap justify-center gap-5 grow mb-8'>

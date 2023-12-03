@@ -18,12 +18,14 @@ const ImageWithFallback = ({
 
   return (
     <Suspense fallback={<p className='text-red-900'>Loadign...</p>}>
-      <Image
-        src={error ? fallback : src}
-        alt={alt}
-        onError={setError}
-        {...props}
-      />
+      <figure className='flex justify-center'>
+        <Image
+          src={error ? fallback : src}
+          alt={alt}
+          onError={setError}
+          {...props}
+        />
+      </figure>
     </Suspense>
   )
 }

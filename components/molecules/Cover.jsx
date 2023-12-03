@@ -23,14 +23,12 @@ const Cover = ({ id, title, imgId }) => {
           Saber más
         </button>
       </div>
-      <figure>
-        <ImageWithFallback
-          src={imgId ? imageUrl : fallbacklImage}
-          alt={title}
-          width={600}
-          height={600}
-        />
-      </figure>
+      <ImageWithFallback
+        src={imgId ? imageUrl : fallbacklImage}
+        alt={title}
+        width={600}
+        height={600}
+      />
       <button
         className='max-sm:block hidden uppercase font-semibold p-2 rounded-lg bg-brandButton w-full md:w-64'
         onClick={handleClick}

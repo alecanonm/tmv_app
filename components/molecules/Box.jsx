@@ -12,11 +12,11 @@ const Box = ({ setShowModal, showModal }) => {
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter > 0
 
   return (
-    <summary className='flex flex-col justify-center items-center gap-5 h-[80vh] w-modal'>
+    <summary className='flex flex-col justify-center items-center gap-2 max-h-[80vh]'>
       {showTable ? (
         <>
           <OrderTable />
-          <div className='flex flex-col justify-center py-5'>
+          <div className='flex flex-col justify-center'>
             <PayPalButtons
               className='overflow-y-auto'
               style={{ color: 'blue', layout: 'horizontal' }}
@@ -29,11 +29,10 @@ const Box = ({ setShowModal, showModal }) => {
           </div>
         </>
       ) : (
-        <p className='text-white text-xl font-bold'>La caja esta vacia...</p>
+        <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
       )}
-
       <button
-        className='text-white text-l '
+        className='text-md bg-red-700 border-red-700 rounded-lg px-4 py-1 text-white w-full sm:w-auto'
         onClick={() => setShowModal(!showModal)}
       >
         Cerrar
