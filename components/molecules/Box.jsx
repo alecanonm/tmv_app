@@ -12,27 +12,33 @@ const Box = ({ setShowModal, showModal }) => {
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter > 0
 
   return (
-    <summary className='flex flex-col justify-center items-center gap-2 max-h-[80vh]'>
+    <summary className='flex flex-col justify-center items-center max-h-[80vh]'>
       {showTable ? (
         <>
           <OrderTable />
-          <div className='flex flex-col justify-center'>
-            <PayPalButtons
-              className='overflow-y-auto'
-              style={{ color: 'blue', layout: 'horizontal' }}
-              createOrder={(data, actions) => {
-                console.log(data, actions)
-              }}
-              // onCancel={() => {}}
-              // onApprove={() => {}}
-            />
-          </div>
+          <PayPalButtons
+            className='mt-4 w-full sm:w-auto'
+            style={{
+              color: 'blue',
+              layout: 'horizontal',
+              disableMaxWidth: true,
+              shape: 'rect',
+              height: 32,
+              tagline: '',
+              label: 'paypal',
+            }}
+            // createOrder={(data, actions) => {
+            //   console.log(data, actions)
+            // }}
+            // onCancel={() => {}}
+            // onApprove={() => {}}
+          />
         </>
       ) : (
         <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
       )}
       <button
-        className='text-md bg-red-700 border-red-700 rounded-lg px-4 py-1 text-white w-full sm:w-auto'
+        className='text-md bg-red-700 border-red-700 rounded-[4px] px-4 py-1 text-white w-full sm:w-auto min-w-[9.3rem]'
         onClick={() => setShowModal(!showModal)}
       >
         Cerrar
