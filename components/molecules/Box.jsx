@@ -47,7 +47,7 @@ const Box = ({ setShowModal, showModal }) => {
       >
         Cerrar
       </button>
-      {cantVapes < globalQuantity && (
+      {cantVapes < globalQuantity && cantVapes > 0 && (
         <p className='text-center pt-2 text-red-400'>
           La cantidad minima es de {globalQuantity} vapes para continuar con la
           compra
