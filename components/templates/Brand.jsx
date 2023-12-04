@@ -97,8 +97,6 @@ const Brand = ({ params }) => {
         height={90}
         xaxies='right-[7px]'
         yaxies='bottom-8'
-        globalQuantity={globalQuantity}
-        vapesCounter={vapesCounter}
       />
     </div>
   )

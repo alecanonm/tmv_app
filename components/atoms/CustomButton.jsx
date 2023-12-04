@@ -7,18 +7,11 @@ import { Box } from '@components/molecules'
 import { Toast } from 'primereact/toast'
 import { useVapesContext } from '@contexts/VapesContext'
 
-const CustomButton = ({
-  width,
-  height,
-  src,
-  alt,
-  xaxies,
-  yaxies,
-  url,
-  vapesCounter,
-}) => {
+const CustomButton = ({ width, height, src, alt, xaxies, yaxies, url }) => {
   const [showModal, setShowModal] = useState(false)
-  const { globalQuantity } = useVapesContext()
+  const { globalQuantity, globalCounter } = useVapesContext()
+
+  const cantVapes = globalCounter[0]?.globalCounter
 
   const show = () => {
     toast.current.show({
@@ -36,7 +29,7 @@ const CustomButton = ({
   const navigateTo = () => {
     url
       ? (window.location.href = url)
-      : vapesCounter >= globalQuantity
+      : cantVapes >= globalQuantity
         ? setShowModal(!showModal)
         : show()
   }
