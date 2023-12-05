@@ -4,21 +4,27 @@ import { PayPalButtons } from '@paypal/react-paypal-js'
 import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
+import classNames from 'classnames'
 
 const Box = ({ setShowModal, showModal }) => {
   const { id: brandId } = useParams()
   const { globalCounter, globalQuantity } = useVapesContext()
-  const showTable =
-    globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter > 0
 
-  const cantVapes = globalCounter[0]?.globalCounter
+  const cantVapes =
+    globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
+  const showPaypal = cantVapes >= globalQuantity
 
   return (
-    <summary className='flex flex-col justify-center items-center max-h-[80vh]'>
-      {showTable ? (
+    <summary
+      className={classNames(
+        'flex flex-col justify-center items-center max-h-[80vh]',
+        { 'gap-4': !showPaypal },
+      )}
+    >
+      {cantVapes > 0 ? (
         <>
           <OrderTable />
-          {cantVapes >= globalQuantity && (
+          {showPaypal && (
             <PayPalButtons
               className='mt-4 w-full sm:w-auto'
               style={{
@@ -52,8 +58,8 @@ const Box = ({ setShowModal, showModal }) => {
       >
         Cerrar
       </button>
-      {cantVapes < globalQuantity && cantVapes > 0 && (
-        <p className='text-center pt-2 text-red-400'>
+      {cantVapes > 0 && cantVapes < globalQuantity && (
+        <p className='text-center text-red-400'>
           La cantidad minima es de {globalQuantity} vapes para continuar con la
           compra
         </p>

@@ -15,6 +15,7 @@ import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 import { Tag } from '@components/atoms/'
+
 const Brand = ({ params }) => {
   const {
     globalCounter,
@@ -39,7 +40,7 @@ const Brand = ({ params }) => {
   )
 
   useEffect(() => {
-    setGlobalQuantity(dataVapes?.prices[0]?.quantity)
+    setGlobalQuantity(Number(dataVapes?.prices[0]?.quantity))
   }, [])
 
   useEffect(() => {

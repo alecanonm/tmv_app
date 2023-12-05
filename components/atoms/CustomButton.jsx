@@ -6,12 +6,15 @@ import { Backdrop } from '@components/atoms'
 import { Box } from '@components/molecules'
 import { Toast } from 'primereact/toast'
 import { useVapesContext } from '@contexts/VapesContext'
+import { useParams } from 'next/navigation'
 
 const CustomButton = ({ width, height, src, alt, xaxies, yaxies, url }) => {
+  const { id: brandId } = useParams()
   const [showModal, setShowModal] = useState(false)
   const { globalQuantity, globalCounter } = useVapesContext()
 
-  const cantVapes = globalCounter[0]?.globalCounter
+  const cantVapes =
+    globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
 
   const show = () => {
     toast.current.show({
