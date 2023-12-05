@@ -16,8 +16,7 @@ const Providers = ({ children }) => (
     <PrimeReactProvider value={{ unstyled: false }}>
       <PayPalScriptProvider
         options={{
-          clientId:
-            'AY0pdI4y8A5nC3lrlOo28Z_McoBSEIklxXGPDJCgo8CsMH6nxqpDLYrIUlU8YnFsSs-dSzqVlXRhe28d',
+          clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
         }}
       >
         <VapesProvider>{children}</VapesProvider>
