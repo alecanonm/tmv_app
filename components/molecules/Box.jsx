@@ -36,14 +36,14 @@ const Box = ({ setShowModal, showModal }) => {
                 tagline: '',
                 label: 'paypal',
               }}
-              createOrder={async () => {
-                const res = await fetch('/api/checkout', {
-                  method: 'POST',
-                })
-                const order = await res.json()
-                console.log(order)
-                return order.id
-              }}
+              // createOrder={async () => {
+              //   const res = await fetch('/api/checkout', {
+              //     method: 'POST',
+              //   })
+              //   const order = await res.json()
+              //   console.log(order)
+              //   return order.id
+              // }}
               // onCancel={() => {}}
               // onApprove={() => {}}
             />
