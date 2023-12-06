@@ -16,6 +16,7 @@ export async function POST() {
         amount: {
           currency_code: 'USD',
           value: '100.00',
+
           breakdown: {
             item_total: {
               currency_code: 'USD',
@@ -25,22 +26,20 @@ export async function POST() {
         },
         items: [
           {
-            name: 'vape muss marmol',
-            description: 'vape muss marmol',
-            quantity: '1',
+            name: 'vapes',
             unit_amount: {
               currency_code: 'USD',
-              value: '100.00',
+              value: '50.00',
             },
+            quantity: '1',
           },
           {
-            name: 'vape muss marmol',
-            description: 'vape muss marmol',
-            quantity: '1',
+            name: 'vapes',
             unit_amount: {
               currency_code: 'USD',
-              value: '100.00',
+              value: '50.00',
             },
+            quantity: '1',
           },
         ],
       },
@@ -48,7 +47,7 @@ export async function POST() {
   })
 
   const response = await client.execute(request)
-  console.log(response)
+
   return NextResponse.json({
     id: response.result.id,
   })
