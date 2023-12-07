@@ -35,7 +35,7 @@ const Box = ({ setShowModal, showModal }) => {
                   onChange={(e) => setValue(e.target.value)}
                   className='bg-[#e0e0e0]'
                 />
-                <label htmlFor='username'>Name</label>
+                <label htmlFor='username'>Nombre</label>
               </span>
               <span className='p-float-label'>
                 <InputText
@@ -44,7 +44,7 @@ const Box = ({ setShowModal, showModal }) => {
                   onChange={(e) => setValue(e.target.value)}
                   className='bg-[#e0e0e0]'
                 />
-                <label htmlFor='username'>Last Name</label>
+                <label htmlFor='username'>Apellido</label>
               </span>
               <span className='p-float-label'>
                 <InputText
@@ -62,7 +62,7 @@ const Box = ({ setShowModal, showModal }) => {
                   onChange={(e) => setValue(e.target.value)}
                   className='bg-[#e0e0e0]'
                 />
-                <label htmlFor='username'>Postal code</label>
+                <label htmlFor='username'>Codigo postal</label>
               </span>
               <span className='p-float-label'>
                 <InputText
