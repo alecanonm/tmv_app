@@ -5,11 +5,12 @@ import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
 import classNames from 'classnames'
-import axios from 'axios'
-
+import { InputText } from 'primereact/inputtext'
+import { useState } from 'react'
 const Box = ({ setShowModal, showModal }) => {
   const { id: brandId } = useParams()
-  const { globalCounter, globalQuantity, vapesToBox } = useVapesContext()
+  const [value, setValue] = useState('')
+  const { globalCounter, globalQuantity } = useVapesContext()
 
   const cantVapes =
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
@@ -25,6 +26,55 @@ const Box = ({ setShowModal, showModal }) => {
       {cantVapes > 0 ? (
         <>
           <OrderTable />
+          <form action=''>
+            <div className=' text-center justify-center items-center flex  gap-6 flex-wrap  pt-6'>
+              <span className='p-float-label'>
+                <InputText
+                  id='username'
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  className='bg-[#e0e0e0]'
+                />
+                <label htmlFor='username'>Name</label>
+              </span>
+              <span className='p-float-label'>
+                <InputText
+                  id='username'
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  className='bg-[#e0e0e0]'
+                />
+                <label htmlFor='username'>Last Name</label>
+              </span>
+              <span className='p-float-label'>
+                <InputText
+                  id='username'
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  className='bg-[#e0e0e0]'
+                />
+                <label htmlFor='username'>Direccion</label>
+              </span>
+              <span className='p-float-label'>
+                <InputText
+                  id='username'
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  className='bg-[#e0e0e0]'
+                />
+                <label htmlFor='username'>Postal code</label>
+              </span>
+              <span className='p-float-label'>
+                <InputText
+                  id='username'
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  className='bg-[#e0e0e0]'
+                />
+                <label htmlFor='username'>Telefono</label>
+              </span>
+            </div>
+          </form>
           {showPaypal && (
             <PayPalButtons
               className='mt-4 w-full sm:w-auto'
@@ -38,16 +88,15 @@ const Box = ({ setShowModal, showModal }) => {
                 label: 'paypal',
               }}
               createOrder={async () => {
-                const res = await axios.post('/api/checkout', {
-                  vapesToBox: vapesToBox.filter(
-                    (vape) => vape.brand.id === brandId,
-                  ),
+                const res = await fetch('/api/checkout', {
+                  method: 'POST',
                 })
-                return res.data.id
+                const order = await res.json()
+                console.log(order)
+                return order.id
               }}
               onApprove={(data, actions) => {
                 actions.order.capture()
-                console.log('order was approved', actions.order.capture())
               }}
               onCancel={() => {
                 console.log('order was cancelled')
