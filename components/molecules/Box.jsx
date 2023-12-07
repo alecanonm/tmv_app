@@ -21,12 +21,12 @@ const Box = ({ setShowModal, showModal }) => {
   return (
     <summary
       className={classNames(
-        'flex flex-col justify-center items-center max-h-[80vh]',
+        'flex flex-col justify-center items-center max-h-[80vh] overflow-y-auto',
         { 'gap-4': !showPaypal },
       )}
     >
       {cantVapes > 0 ? (
-        <div className='overflow-y-auto'>
+        <>
           <OrderTable />
           <form action=''>
             <div className='text-center justify-center items-center flex gap-6 flex-wrap pt-6'>
@@ -35,7 +35,7 @@ const Box = ({ setShowModal, showModal }) => {
                   id='username'
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0]'
+                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
                 />
                 <label htmlFor='username'>Nombre</label>
               </span>
@@ -44,7 +44,7 @@ const Box = ({ setShowModal, showModal }) => {
                   id='username'
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0]'
+                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
                 />
                 <label htmlFor='username'>Apellido</label>
               </span>
@@ -53,7 +53,7 @@ const Box = ({ setShowModal, showModal }) => {
                   id='username'
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0]'
+                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
                 />
                 <label htmlFor='username'>Direccion</label>
               </span>
@@ -62,7 +62,7 @@ const Box = ({ setShowModal, showModal }) => {
                   id='username'
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0]'
+                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
                 />
                 <label htmlFor='username'>Codigo postal</label>
               </span>
@@ -71,13 +71,13 @@ const Box = ({ setShowModal, showModal }) => {
                   id='username'
                   value={value}
                   onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0]'
+                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
                 />
                 <label htmlFor='username'>Telefono</label>
               </span>
             </div>
           </form>
-        </div>
+        </>
       ) : (
         <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
       )}
