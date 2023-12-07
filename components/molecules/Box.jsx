@@ -26,10 +26,10 @@ const Box = ({ setShowModal, showModal }) => {
       )}
     >
       {cantVapes > 0 ? (
-        <>
+        <div className='overflow-y-auto'>
           <OrderTable />
           <form action=''>
-            <div className=' text-center justify-center items-center flex  gap-6 flex-wrap  pt-6'>
+            <div className='text-center justify-center items-center flex gap-6 flex-wrap pt-6'>
               <span className='p-float-label'>
                 <InputText
                   id='username'
@@ -77,38 +77,38 @@ const Box = ({ setShowModal, showModal }) => {
               </span>
             </div>
           </form>
-          {showPaypal && (
-            <PayPalButtons
-              className='mt-4 w-full sm:w-auto'
-              style={{
-                color: 'blue',
-                layout: 'horizontal',
-                disableMaxWidth: true,
-                shape: 'rect',
-                height: 32,
-                tagline: '',
-                label: 'paypal',
-              }}
-              createOrder={async () => {
-                const res = await axios.post('/api/checkout', {
-                  vapesToBox: vapesToBox.filter(
-                    (vape) => vape.brand.id === brandId,
-                  ),
-                })
-                return res.data.id
-              }}
-              onApprove={(data, actions) => {
-                actions.order.capture()
-                console.log('order was approved', actions.order.capture())
-              }}
-              onCancel={() => {
-                console.log('order was cancelled')
-              }}
-            />
-          )}
-        </>
+        </div>
       ) : (
         <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
+      )}
+      {showPaypal && (
+        <PayPalButtons
+          className='mt-4 w-full sm:w-auto '
+          style={{
+            color: 'blue',
+            layout: 'horizontal',
+            disableMaxWidth: true,
+            shape: 'rect',
+            height: 32,
+            tagline: '',
+            label: 'paypal',
+          }}
+          createOrder={async () => {
+            const res = await axios.post('/api/checkout', {
+              vapesToBox: vapesToBox.filter(
+                (vape) => vape.brand.id === brandId,
+              ),
+            })
+            return res.data.id
+          }}
+          onApprove={(data, actions) => {
+            actions.order.capture()
+            console.log('order was approved', actions.order.capture())
+          }}
+          onCancel={() => {
+            console.log('order was cancelled')
+          }}
+        />
       )}
       <button
         className='text-md bg-red-700 border-red-700 rounded-[4px] px-4 py-1 text-white w-full sm:w-auto min-w-[9.3rem]'
