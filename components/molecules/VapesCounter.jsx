@@ -39,7 +39,9 @@ const VapesCounter = ({ id }) => {
       quantity,
       price: vapesPerBrand.prices[0].unit_price,
     }
-    const resVPB = [...boxVapes.filter((pv) => pv.id !== id), newVape]
+    const deletedCurrentVape = boxVapes.filter((pv) => pv.id !== id)
+    const resVPB =
+      quantity > 0 ? [...deletedCurrentVape, newVape] : deletedCurrentVape
     setLocalStorage(LS_VAPES_TO_BOX, resVPB)
     return resVPB
   }

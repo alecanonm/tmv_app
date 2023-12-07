@@ -17,6 +17,7 @@ const Providers = ({ children }) => (
       <PayPalScriptProvider
         options={{
           clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+          currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY,
         }}
       >
         <VapesProvider>{children}</VapesProvider>

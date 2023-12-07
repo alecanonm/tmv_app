@@ -5,10 +5,11 @@ import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
 import classNames from 'classnames'
+import axios from 'axios'
 
 const Box = ({ setShowModal, showModal }) => {
   const { id: brandId } = useParams()
-  const { globalCounter, globalQuantity } = useVapesContext()
+  const { globalCounter, globalQuantity, vapesToBox } = useVapesContext()
 
   const cantVapes =
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
@@ -37,15 +38,16 @@ const Box = ({ setShowModal, showModal }) => {
                 label: 'paypal',
               }}
               createOrder={async () => {
-                const res = await fetch('/api/checkout', {
-                  method: 'POST',
+                const res = await axios.post('/api/checkout', {
+                  vapesToBox: vapesToBox.filter(
+                    (vape) => vape.brand.id === brandId,
+                  ),
                 })
-                const order = await res.json()
-                console.log(order)
-                return order.id
+                return res.data.id
               }}
               onApprove={(data, actions) => {
                 actions.order.capture()
+                console.log('order was approved', actions.order.capture())
               }}
               onCancel={() => {
                 console.log('order was cancelled')
