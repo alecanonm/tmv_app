@@ -38,13 +38,8 @@ const VerifyAge = () => {
               >
                 Soy mayor de 18 años
               </button>
-              <button
-                onClick={() => {
-                  window.location.href = 'https://www.google.com'
-                }}
-                className='text-md font-bold uppercase bg-red-700 border-red-700 rounded-[4px] px-4 py-2 text-white w-full sm:w-auto min-w-[9.3rem]'
-              >
-                Soy menor de 18 años
+              <button className='text-md font-bold uppercase bg-red-700 border-red-700 rounded-[4px] px-4 py-2 text-white w-full sm:w-auto min-w-[9.3rem]'>
+                <a href='https://www.google.com/'>Soy menor de 18 años</a>
               </button>
             </div>
             <p className='text-xl text-slate-500'>

@@ -36,7 +36,6 @@ const Box = ({ setShowModal, showModal }) => {
           <ShippingForm handleForm={handleForm} />
         </>
       ) : (
-        // <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
         <figure>
           <Image src={boxEmpty} width={150} height={150} />
         </figure>
