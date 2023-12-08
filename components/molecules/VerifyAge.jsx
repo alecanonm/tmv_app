@@ -16,7 +16,7 @@ const VerifyAge = () => {
 
   return (
     <>
-      {showModal && (
+      {!showModal && (
         <Backdrop>
           <div className='flex gap-2 flex-col text-center justify-center items-center'>
             <h1 className='text-5xl'>
