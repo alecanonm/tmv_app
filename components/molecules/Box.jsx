@@ -37,7 +37,7 @@ const Box = ({ setShowModal, showModal }) => {
         </>
       ) : (
         <figure>
-          <Image src={boxEmpty} width={150} height={150} />
+          <Image src={boxEmpty} width={150} height={150} alt='empty-box' />
         </figure>
       )}
       {showPaypal && (
