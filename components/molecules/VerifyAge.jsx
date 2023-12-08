@@ -4,19 +4,19 @@ import { useState } from 'react'
 import { Backdrop } from '@components/atoms'
 import Image from 'next/image'
 import logo from '@public/assets/handVape.svg'
-import { LS_VERIFY_AGE, getLocalStorage, setLocalStorage } from '@utils'
+// import { LS_VERIFY_AGE, getLocalStorage, setLocalStorage } from '@utils'
 
 const VerifyAge = () => {
   const [showModal, setShowModal] = useState(false)
 
   const handleVerifyAge = () => {
     setShowModal(!showModal)
-    setLocalStorage(LS_VERIFY_AGE, true)
+    // setLocalStorage(LS_VERIFY_AGE, true)
   }
 
   return (
     <>
-      {!getLocalStorage(LS_VERIFY_AGE) && (
+      {showModal && (
         <Backdrop>
           <div className='flex gap-2 flex-col text-center justify-center items-center'>
             <h1 className='text-5xl'>
