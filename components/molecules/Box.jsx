@@ -7,7 +7,9 @@ import { OrderTable, ShippingForm } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
 import { classNames as cx } from 'primereact/utils'
+import Image from 'next/image'
 import { useForm } from 'react-hook-form'
+import boxEmpty from '@public/assets/empty-box.png'
 
 const Box = ({ setShowModal, showModal }) => {
   const { id: brandId } = useParams()
@@ -34,7 +36,10 @@ const Box = ({ setShowModal, showModal }) => {
           <ShippingForm handleForm={handleForm} />
         </>
       ) : (
-        <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
+        // <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
+        <figure>
+          <Image src={boxEmpty} width={150} height={150} />
+        </figure>
       )}
       {showPaypal && (
         <PayPalButtons
