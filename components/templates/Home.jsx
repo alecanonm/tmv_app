@@ -6,6 +6,7 @@ import { Covers } from '@components/organisms'
 import { HomeSkeleton } from '@components/molecules/skeletons'
 import { useVapesContext } from '@contexts/VapesContext'
 import { LS_GLOBAL_COUNTERS, LS_VAPES_TO_BOX, getLocalStorage } from '@utils'
+import { VerifyAge } from '@components/molecules'
 
 const Home = () => {
   const { setGlobalCounter, setVapesToBox } = useVapesContext()
@@ -17,6 +18,7 @@ const Home = () => {
 
   return (
     <Suspense fallback={<HomeSkeleton />}>
+      <VerifyAge />
       <Covers />
     </Suspense>
   )
