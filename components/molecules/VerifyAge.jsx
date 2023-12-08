@@ -18,17 +18,17 @@ const VerifyAge = () => {
     <>
       {!showModal && (
         <Backdrop>
-          <div className='flex gap-2 flex-col text-center justify-center items-center'>
-            <h1 className='text-5xl'>
+          <div className='flex gap-2 flex-col  text-center justify-center items-center max-h-[80vh] sm:max-h-full'>
+            <h1 className='text-2xl sm:text-5xl'>
               <strong>Bienvenido a Take my vape</strong>
             </h1>
             <figure>
-              <Image src={logo} alt='logo' height={200} width={200} />
+              <Image src={logo} alt='logo' className=' w-28 sm:w-52 smd:h-52' />
             </figure>
-            <h2 className='text-3xl font-semibold'>
+            <h2 className='text-xl sm:text-3xl font-semibold'>
               Para ingrese a este sitio debes ser mayor de edad.
             </h2>
-            <p className='text-xl text-slate-500'>
+            <p className='text-lg sm:text-xl text-slate-500'>
               Por favor verifica tu edad antes de entrar al sitio.
             </p>
             <div className='flex gap-2 flex-wrap my-5'>
@@ -42,7 +42,7 @@ const VerifyAge = () => {
                 Soy menor de 18 años
               </button>
             </div>
-            <p className='text-xl text-slate-500'>
+            <p className='text-md sm:text-xl text-slate-500'>
               18+ Producto exclusivo para mayores de edad. Contiene nicotina la
               cual es adictiva
             </p>
