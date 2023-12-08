@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Backdrop } from '@components/atoms'
 import Image from 'next/image'
 import logo from '@public/assets/handVape.svg'
-import { LS_VERIFY_AGE, setLocalStorage } from '@utils'
+import { LS_VERIFY_AGE, setLocalStorage, getLocalStorage } from '@utils'
 
 const VerifyAge = () => {
   const [showModal, setShowModal] = useState(false)
@@ -13,6 +13,10 @@ const VerifyAge = () => {
     setShowModal(!showModal)
     setLocalStorage(LS_VERIFY_AGE, true)
   }
+
+  useEffect(() => {
+    setShowModal(getLocalStorage(LS_VERIFY_AGE))
+  }, [showModal])
 
   return (
     <>
