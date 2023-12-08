@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { Backdrop } from '@components/atoms'
 import Image from 'next/image'
 import logo from '@public/assets/handVape.svg'
-// import { LS_VERIFY_AGE, getLocalStorage, setLocalStorage } from '@utils'
+import { LS_VERIFY_AGE, setLocalStorage } from '@utils'
 
 const VerifyAge = () => {
   const [showModal, setShowModal] = useState(false)
 
   const handleVerifyAge = () => {
     setShowModal(!showModal)
-    // setLocalStorage(LS_VERIFY_AGE, true)
+    setLocalStorage(LS_VERIFY_AGE, true)
   }
 
   return (
@@ -38,7 +38,12 @@ const VerifyAge = () => {
               >
                 Soy mayor de 18 años
               </button>
-              <button className='text-md font-bold uppercase bg-red-700 border-red-700 rounded-[4px] px-4 py-2 text-white w-full sm:w-auto min-w-[9.3rem]'>
+              <button
+                onClick={() =>
+                  (window.location.href = 'https://www.google.com/')
+                }
+                className='text-md font-bold uppercase bg-red-700 border-red-700 rounded-[4px] px-4 py-2 text-white w-full sm:w-auto min-w-[9.3rem]'
+              >
                 Soy menor de 18 años
               </button>
             </div>
