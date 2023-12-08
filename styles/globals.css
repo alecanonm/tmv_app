@@ -7,6 +7,21 @@
     @apply w-[90vw] md:w-5/6 xl:w-2/3 max-w-4xl;
   }
 
+  .custom-float-label {
+    @apply top-[-5px] left-3 bg-white rounded-lg px-2 text-sm;
+  }
+
+  .p-float-label input:focus ~ label,
+  .p-float-label input:-webkit-autofill ~ label,
+  .p-float-label input.p-filled ~ label,
+  .p-float-label textarea:focus ~ label,
+  .p-float-label textarea.p-filled ~ label,
+  .p-float-label .p-inputwrapper-focus ~ label,
+  .p-float-label .p-inputwrapper-filled ~ label,
+  .p-float-label .p-tooltip-target-wrapper ~ label {
+    @apply custom-float-label;
+  }
+
   #nprogress {
     pointer-events: none;
   }

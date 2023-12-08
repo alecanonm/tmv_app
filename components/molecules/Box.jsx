@@ -1,26 +1,29 @@
+/* eslint-disable no-undef */
 'use client'
 
+import axios from 'axios'
 import { PayPalButtons } from '@paypal/react-paypal-js'
-import { OrderTable } from '@components/molecules'
+import { OrderTable, ShippingForm } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
-import classNames from 'classnames'
-import { InputText } from 'primereact/inputtext'
-import { useState } from 'react'
-import axios from 'axios'
+import { classNames as cx } from 'primereact/utils'
+import { useForm } from 'react-hook-form'
 
 const Box = ({ setShowModal, showModal }) => {
   const { id: brandId } = useParams()
-  const [value, setValue] = useState('')
   const { globalCounter, globalQuantity, vapesToBox } = useVapesContext()
 
   const cantVapes =
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
   const showPaypal = cantVapes >= globalQuantity
 
+  const defaultValues = {}
+  const handleForm = useForm({ defaultValues })
+  const { handleSubmit } = handleForm
+
   return (
     <summary
-      className={classNames(
+      className={cx(
         'flex flex-col justify-center items-center max-h-[80vh] overflow-y-auto',
         { 'gap-4': !showPaypal },
       )}
@@ -28,55 +31,7 @@ const Box = ({ setShowModal, showModal }) => {
       {cantVapes > 0 ? (
         <>
           <OrderTable />
-          <form action=''>
-            <div className='text-center justify-center items-center flex gap-6 flex-wrap pt-6'>
-              <span className='p-float-label'>
-                <InputText
-                  id='username'
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
-                />
-                <label htmlFor='username'>Nombre</label>
-              </span>
-              <span className='p-float-label'>
-                <InputText
-                  id='username'
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
-                />
-                <label htmlFor='username'>Apellido</label>
-              </span>
-              <span className='p-float-label'>
-                <InputText
-                  id='username'
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
-                />
-                <label htmlFor='username'>Direccion</label>
-              </span>
-              <span className='p-float-label'>
-                <InputText
-                  id='username'
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
-                />
-                <label htmlFor='username'>Codigo postal</label>
-              </span>
-              <span className='p-float-label'>
-                <InputText
-                  id='username'
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  className='bg-[#e0e0e0] p-1 border-2 ring-0 border-black'
-                />
-                <label htmlFor='username'>Telefono</label>
-              </span>
-            </div>
-          </form>
+          <ShippingForm handleForm={handleForm} />
         </>
       ) : (
         <p className='text-black text-xl font-bold'>La caja esta vacia...</p>
@@ -94,12 +49,22 @@ const Box = ({ setShowModal, showModal }) => {
             label: 'paypal',
           }}
           createOrder={async () => {
-            const res = await axios.post('/api/checkout', {
-              vapesToBox: vapesToBox.filter(
-                (vape) => vape.brand.id === brandId,
-              ),
-            })
-            return res.data.id
+            handleSubmit(
+              async (data) => {
+                console.log({ data })
+                const res = await axios.post('/api/checkout', {
+                  vapesToBox: vapesToBox.filter(
+                    (vape) => vape.brand.id === brandId,
+                  ),
+                })
+                console.log({ res })
+                return res.data.id
+              },
+              (errors) => {
+                console.log({ errors })
+                return null
+              },
+            )()
           }}
           onApprove={(data, actions) => {
             actions.order.capture()

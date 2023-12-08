@@ -5,6 +5,7 @@ import { VapesProvider } from '@contexts/VapesContext'
 import { PrimeReactProvider } from 'primereact/api'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import 'primereact/resources/themes/lara-light-cyan/theme.css'
+import 'primeicons/primeicons.css'
 
 const client = new ApolloClient({
   uri: `${process.env.NEXT_PUBLIC_DIRECTUS_BASE_URL}graphql`,
