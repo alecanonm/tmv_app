@@ -63,7 +63,7 @@ const VapesCounter = ({ id }) => {
 
   useEffect(() => {
     const boxVape = vapesToBox.find((vape) => vape.id === id)
-    if (boxVape) setCounter(boxVape.quantity)
+    setCounter(boxVape ? boxVape.quantity : 0)
   }, [vapesToBox])
 
   return (

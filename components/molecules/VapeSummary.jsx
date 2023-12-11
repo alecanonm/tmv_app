@@ -8,7 +8,7 @@ const VapeSummary = ({
   showDescription,
 }) => {
   return (
-    <summary className='flex flex-col items-center'>
+    <summary className='flex flex-col gap-2 items-center'>
       <button
         type='button'
         className='font-bold self-end bg-yellow-500 px-3 p-1 rounded-md'
