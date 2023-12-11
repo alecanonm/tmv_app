@@ -4,7 +4,7 @@ import nProgress from 'nprogress'
 const useGoTo = () => {
   const router = useRouter()
 
-  const goToPage = (pagePath: string) => {
+  const goToPage = (pagePath) => {
     if (window.location.pathname !== pagePath) nProgress.start()
     return router.push(pagePath)
   }

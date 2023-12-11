@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 'use client'
 
 // import axios from 'axios'
@@ -9,7 +8,7 @@ import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
 
-const Box = ({ setShowModal, showModal }) => {
+const Box = ({ showModal, setShowModal }) => {
   const { id: brandId } = useParams()
   const { globalCounter, globalQuantity } = useVapesContext()
 
