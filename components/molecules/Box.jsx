@@ -1,25 +1,21 @@
 'use client'
 
-// import axios from 'axios'
+import axios from 'axios'
 import Image from 'next/image'
 import boxEmpty from '@public/assets/empty-box.png'
-import { useEffect } from 'react'
+import { useState } from 'react'
 import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
 
 const Box = ({ showModal, setShowModal }) => {
   const { id: brandId } = useParams()
-  const { globalCounter, globalQuantity } = useVapesContext()
+  const [loadingCheckout, setLoadingCheckout] = useState(false)
+  const { globalCounter, globalQuantity, vapesToBox } = useVapesContext()
 
   const cantVapes =
     globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
   const showCheckout = cantVapes >= globalQuantity
-
-  useEffect(() => {
-    let locale = Intl.DateTimeFormat().resolvedOptions().locale
-    console.log({ locale })
-  }, [])
 
   return (
     <summary className='flex flex-col gap-4 justify-center items-center'>
@@ -40,11 +36,25 @@ const Box = ({ showModal, setShowModal }) => {
         {showCheckout && (
           <button
             className='custom-button bg-blue-700 border-blue-700 text-md'
-            onClick={() => {
-              console.log('Checkout!')
+            onClick={async () => {
+              setLoadingCheckout(true)
+              const res = await axios.post('/api/checkout', {
+                vapesToBox: vapesToBox.filter(
+                  (vape) => vape.brand.id === brandId,
+                ),
+              })
+              setLoadingCheckout(false)
+              window.location.assign(res.data.url)
             }}
           >
-            Checkout
+            <div className='flex gap-2 justify-center w-full'>
+              {loadingCheckout && (
+                <div>
+                  <i className='pi pi-spin pi-spinner' />
+                </div>
+              )}
+              <div>Checkout</div>
+            </div>
           </button>
         )}
       </div>
@@ -59,9 +69,3 @@ const Box = ({ showModal, setShowModal }) => {
 }
 
 export default Box
-
-// await axios.post('/api/checkout', {
-//   vapesToBox: vapesToBox.filter(
-//     (vape) => vape.brand.id === brandId,
-//   ),
-// })

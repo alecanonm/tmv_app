@@ -14,21 +14,16 @@ const OrderTable = () => {
   const { id: brandId } = useParams()
 
   const handleDelete = function handleDelete(id) {
-    const vape = vapesToBox.find((vape) => vape.id === id)
-    const newVape = {
-      ...vape,
-      quantity: 0,
-    }
-
-    const resVPB = [...vapesToBox.filter((pv) => pv.id !== id), newVape]
-    setLocalStorage(LS_VAPES_TO_BOX, resVPB)
-    setVapesToBox(resVPB)
+    const currentQuantity = vapesToBox.find((pv) => pv.id === id).quantity
+    const deletedCurrentVape = vapesToBox.filter((pv) => pv.id !== id)
+    setLocalStorage(LS_VAPES_TO_BOX, deletedCurrentVape)
+    setVapesToBox(deletedCurrentVape)
 
     setGlobalCounter((prev) => {
       const brandGC = prev.find((gc) => gc.brandId === brandId)
       const newGlobalCounter = {
         brandId,
-        globalCounter: brandGC.globalCounter - vape.quantity,
+        globalCounter: brandGC.globalCounter - currentQuantity,
       }
       const resGC = [
         ...prev.filter((gc) => gc.brandId !== brandId),
