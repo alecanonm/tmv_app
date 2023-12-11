@@ -1,6 +1,6 @@
 import { CURRENCY_CODE } from './constants'
 
-export const vapesToPayPalOrderMapper = (vapes) => {
+export const vapesToStripeOrderMapper = (vapes) => {
   const total =
     vapes.reduce((acc, vape) => acc + vape.price * vape.quantity, 0) + ''
 

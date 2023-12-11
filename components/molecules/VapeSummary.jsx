@@ -9,13 +9,13 @@ const VapeSummary = ({
 }) => {
   return (
     <summary className='flex flex-col items-center'>
-      <div
-        role='button'
+      <button
+        type='button'
         className='font-bold self-end bg-yellow-500 px-3 p-1 rounded-md'
         onClick={() => setShowDescription(!showDescription)}
       >
         X
-      </div>
+      </button>
       <h1 className='text-3xl md:text-4xl text-center'>
         <strong>{flavor}</strong>
       </h1>

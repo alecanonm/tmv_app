@@ -41,7 +41,7 @@ const OrderTable = () => {
 
   return (
     <div className='flex flex-col gap-2 w-full justify-center'>
-      <div className='overflow-auto w-full'>
+      <div className='overflow-x-auto w-full'>
         <table className='text-black w-full min-w-[30rem]'>
           <thead>
             <tr>

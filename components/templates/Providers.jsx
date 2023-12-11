@@ -3,7 +3,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { VapesProvider } from '@contexts/VapesContext'
 import { PrimeReactProvider } from 'primereact/api'
-import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import 'primereact/resources/themes/lara-light-cyan/theme.css'
 import 'primeicons/primeicons.css'
 
@@ -15,14 +14,7 @@ const client = new ApolloClient({
 const Providers = ({ children }) => (
   <ApolloProvider client={client}>
     <PrimeReactProvider value={{ unstyled: false }}>
-      <PayPalScriptProvider
-        options={{
-          clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
-          currency: process.env.NEXT_PUBLIC_PAYPAL_CURRENCY,
-        }}
-      >
-        <VapesProvider>{children}</VapesProvider>
-      </PayPalScriptProvider>
+      <VapesProvider>{children}</VapesProvider>
     </PrimeReactProvider>
   </ApolloProvider>
 )

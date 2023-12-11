@@ -22,12 +22,12 @@ const VerifyAge = () => {
     <>
       {!showModal && (
         <Backdrop>
-          <div className='flex gap-2 flex-col  text-center justify-center items-center max-h-[80vh] sm:max-h-full'>
+          <div className='flex gap-2 flex-col text-center justify-center items-center sm:max-h-full my-4'>
             <h1 className='text-2xl sm:text-5xl'>
               <strong>Bienvenido a Take my vape</strong>
             </h1>
             <figure>
-              <Image src={logo} alt='logo' className=' w-28 sm:w-52 smd:h-52' />
+              <Image src={logo} alt='logo' className='w-28 sm:w-52 smd:h-52' />
             </figure>
             <h2 className='text-xl sm:text-3xl font-semibold'>
               Para ingrese a este sitio debes ser mayor de edad.
