@@ -6,14 +6,12 @@ import boxEmpty from '@public/assets/empty-box.png'
 import { useState } from 'react'
 import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
-import { useParams } from 'next/navigation'
 import { useBrandGlobalCounter } from '@hooks'
 
 const Box = ({ showModal, setShowModal }) => {
-  const { id: brandId } = useParams()
   const [loadingCheckout, setLoadingCheckout] = useState(false)
   const { globalQuantity, vapesToBox } = useVapesContext()
-  const { brandGC } = useBrandGlobalCounter(brandId)
+  const { brandId, brandGC } = useBrandGlobalCounter()
 
   const handleCheckout = async () => {
     setLoadingCheckout(true)

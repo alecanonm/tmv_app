@@ -1,20 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import { Suspense, useEffect } from 'react'
+import { Suspense } from 'react'
 import { Covers } from '@components/organisms'
 import { HomeSkeleton } from '@components/molecules/skeletons'
-import { useVapesContext } from '@contexts/VapesContext'
-import { LS_GLOBAL_COUNTERS, LS_VAPES_TO_BOX, getLocalStorage } from '@utils'
 import { VerifyAge } from '@components/molecules'
+import { useFetchLocalStorage } from '@hooks'
 
 const Home = () => {
-  const { setGlobalCounter, setVapesToBox } = useVapesContext()
-
-  useEffect(() => {
-    setGlobalCounter(getLocalStorage(LS_GLOBAL_COUNTERS) || [])
-    setVapesToBox(getLocalStorage(LS_VAPES_TO_BOX) || [])
-  }, [])
+  useFetchLocalStorage()
 
   return (
     <Suspense fallback={<HomeSkeleton />}>

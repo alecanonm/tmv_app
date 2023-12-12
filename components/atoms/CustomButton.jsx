@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { Backdrop } from '@components/atoms'
 import { Box } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
-import { useParams } from 'next/navigation'
 import { useBrandGlobalCounter, withToast } from '@hooks'
 
 const CustomButton = ({
@@ -18,10 +17,9 @@ const CustomButton = ({
   url,
   showWarning,
 }) => {
-  const { id: brandId } = useParams()
   const [showModal, setShowModal] = useState(false)
   const { globalQuantity } = useVapesContext()
-  const { brandGC } = useBrandGlobalCounter(brandId)
+  const { brandGC } = useBrandGlobalCounter()
 
   const navigateTo = () => {
     url

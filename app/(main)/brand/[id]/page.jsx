@@ -5,6 +5,6 @@ export const metadata = {
   description: 'Take my vape | Brand page',
 }
 
-const BrandPage = ({ params }) => <Brand params={params} />
+const BrandPage = () => <Brand />
 
 export default BrandPage

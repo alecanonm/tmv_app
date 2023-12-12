@@ -16,7 +16,7 @@ const VerifyAge = () => {
 
   useEffect(() => {
     setShowModal(getLocalStorage(LS_VERIFY_AGE))
-  }, [showModal])
+  }, [])
 
   return (
     !showModal && (

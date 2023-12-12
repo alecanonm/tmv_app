@@ -10,8 +10,8 @@ const getCurrentVapes = (vapes, brandId) =>
   vapes.filter((vape) => vape.brand.id === brandId)
 
 const OrderTable = () => {
-  const { vapesToBox, setVapesToBox, setGlobalCounter } = useVapesContext()
   const { id: brandId } = useParams()
+  const { vapesToBox, setVapesToBox, setGlobalCounter } = useVapesContext()
 
   const handleDelete = function handleDelete(id) {
     const currentQuantity = vapesToBox.find((pv) => pv.id === id).quantity
