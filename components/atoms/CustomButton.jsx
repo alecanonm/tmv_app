@@ -6,7 +6,7 @@ import { Backdrop } from '@components/atoms'
 import { Box } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
-import { withToast } from '@hooks'
+import { useBrandGlobalCounter, withToast } from '@hooks'
 
 const CustomButton = ({
   width,
@@ -20,15 +20,13 @@ const CustomButton = ({
 }) => {
   const { id: brandId } = useParams()
   const [showModal, setShowModal] = useState(false)
-  const { globalQuantity, globalCounter } = useVapesContext()
-
-  const cantVapes =
-    globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
+  const { globalQuantity } = useVapesContext()
+  const { brandGC } = useBrandGlobalCounter(brandId)
 
   const navigateTo = () => {
     url
       ? (window.location.href = url)
-      : cantVapes >= globalQuantity
+      : brandGC >= globalQuantity
         ? setShowModal(!showModal)
         : showWarning(
             'No has alcanzado la cantidad mínima',

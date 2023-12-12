@@ -15,16 +15,17 @@ import { CustomButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 import { Tag } from '@components/atoms/'
+import { useBrandGlobalCounter } from '@hooks'
 
 const Brand = ({ params }) => {
   const {
-    globalCounter,
     globalQuantity,
     setGlobalQuantity,
     setVapesPerBrand,
     setGlobalCounter,
     setVapesToBox,
   } = useVapesContext()
+  const { brandGC } = useBrandGlobalCounter(params.id)
 
   const { data: dataVapes } = useSuspenseQuery(GET_VAPES, {
     variables: {
@@ -32,30 +33,21 @@ const Brand = ({ params }) => {
     },
   })
 
-  const color = dataVapes.vapes[0]?.brand.color
-  const brandName = dataVapes.vapes[0]?.brand.name
-  const unitPrice = dataVapes?.prices[0]?.unit_price
-  const brandGlobalCounter = globalCounter.find(
-    (gc) => gc.brandId === params.id,
-  )
-
-  useEffect(() => {
-    setGlobalQuantity(Number(dataVapes?.prices[0]?.quantity))
-  }, [])
-
   useEffect(() => {
     setVapesPerBrand(dataVapes)
+    setGlobalQuantity(Number(dataVapes?.prices[0]?.quantity || 0))
     setGlobalCounter(getLocalStorage(LS_GLOBAL_COUNTERS) || [])
     setVapesToBox(getLocalStorage(LS_VAPES_TO_BOX) || [])
   }, [dataVapes])
 
-  const vapesCounter = brandGlobalCounter?.globalCounter
-
   return (
-    <div style={{ background: color }} className='flex flex-col-reverse grow'>
+    <div
+      style={{ background: dataVapes.vapes[0]?.brand.color }}
+      className='flex flex-col-reverse grow'
+    >
       <summary className='flex flex-col gap-8 grow container mx-auto'>
         <h1 className='text-3xl md:text-4xl font-bold text-white text-center mt-8 px-[6rem] md:px-0'>
-          {brandName}
+          {dataVapes.vapes[0]?.brand.name}
         </h1>
         <section className='flex flex-wrap justify-center gap-5 grow mb-8'>
           {dataVapes.vapes.map((vape) => {
@@ -76,18 +68,18 @@ const Brand = ({ params }) => {
       </summary>
       <div className='sticky flex justify-center top-0 bg-[#070707a0] backdrop-blur-sm w-full p-5'>
         <ProgressBar
-          value={((vapesCounter || 0) * 100) / globalQuantity}
+          value={(brandGC * 100) / globalQuantity}
           displayValueTemplate={() => null}
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
         <span className='absolute flex justify-center bg-transparent backdrop-blur-lg text-black'>
           <strong>
-            {vapesCounter || 0}/{globalQuantity}
+            {brandGC}/{globalQuantity}
           </strong>
         </span>
         <div>
-          <Tag price={unitPrice} />
+          <Tag price={dataVapes?.prices[0]?.unit_price} />
         </div>
       </div>
 

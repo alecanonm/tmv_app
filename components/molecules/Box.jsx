@@ -7,15 +7,13 @@ import { useState } from 'react'
 import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
+import { useBrandGlobalCounter } from '@hooks'
 
 const Box = ({ showModal, setShowModal }) => {
   const { id: brandId } = useParams()
   const [loadingCheckout, setLoadingCheckout] = useState(false)
-  const { globalCounter, globalQuantity, vapesToBox } = useVapesContext()
-
-  const cantVapes =
-    globalCounter.find((gc) => gc.brandId === brandId)?.globalCounter || 0
-  const showCheckout = cantVapes >= globalQuantity
+  const { globalQuantity, vapesToBox } = useVapesContext()
+  const { brandGC } = useBrandGlobalCounter(brandId)
 
   const handleCheckout = async () => {
     setLoadingCheckout(true)
@@ -28,7 +26,7 @@ const Box = ({ showModal, setShowModal }) => {
 
   return (
     <summary className='flex flex-col gap-4 justify-center items-center'>
-      {cantVapes > 0 ? (
+      {brandGC > 0 ? (
         <OrderTable />
       ) : (
         <figure>
@@ -42,7 +40,7 @@ const Box = ({ showModal, setShowModal }) => {
         >
           Cerrar
         </button>
-        {showCheckout && (
+        {brandGC >= globalQuantity && (
           <button
             className='custom-button bg-blue-700 border-blue-700 text-md order-first md:order-last'
             onClick={handleCheckout}
@@ -58,7 +56,7 @@ const Box = ({ showModal, setShowModal }) => {
           </button>
         )}
       </div>
-      {cantVapes > 0 && cantVapes < globalQuantity && (
+      {brandGC > 0 && brandGC < globalQuantity && (
         <p className='text-center text-red-400'>
           La cantidad minima es de {globalQuantity} vapes para continuar con la
           compra
