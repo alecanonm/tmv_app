@@ -19,6 +19,7 @@ const ImageWithFallback = ({
   return (
     <figure className='flex justify-center'>
       <Image
+        className='object-contain max-h-[400px] md:max-h-[500px] lg:max-h-[600px]'
         src={error ? fallback : src}
         alt={alt}
         onError={setError}
