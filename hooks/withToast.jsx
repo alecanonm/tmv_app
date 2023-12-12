@@ -41,7 +41,7 @@ const withToast = (WrappedComponent) => {
 
     return (
       <>
-        <Toast ref={toast} className='w-[90vw] sm:w-auto' />
+        <Toast ref={toast} />
         <WrappedComponent
           {...props}
           showSuccess={showSuccess}

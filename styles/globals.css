@@ -3,6 +3,10 @@
 @import 'tailwindcss/utilities';
 
 @layer base {
+  body {
+    @apply [&_.p-toast]:max-w-[90vw] [&_.p-toast]:sm:max-w-[30rem];
+  }
+
   .w-modal {
     @apply w-[90vw] md:w-5/6 xl:w-2/3 max-w-4xl;
   }

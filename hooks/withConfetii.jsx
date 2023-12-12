@@ -3,16 +3,16 @@
 import { useCallback, useRef } from 'react'
 import ReactCanvasConfetti from 'react-canvas-confetti'
 
-const canvasStyles = {
-  position: 'fixed',
-  pointerEvents: 'none',
-  width: '100%',
-  height: '100%',
-  top: 0,
-  left: 0,
-}
-
 const withConfetii = (WrappedComponent) => {
+  const canvasStyles = {
+    position: 'fixed',
+    pointerEvents: 'none',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+  }
+
   const ComponentWithConfetii = (props) => {
     const refAnimationInstance = useRef(null)
 
