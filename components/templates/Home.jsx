@@ -11,10 +11,12 @@ const Home = () => {
   useFetchLocalStorage()
 
   return (
-    <Suspense fallback={<HomeSkeleton />}>
+    <>
       <VerifyAge />
-      <Covers />
-    </Suspense>
+      <Suspense fallback={<HomeSkeleton />}>
+        <Covers />
+      </Suspense>
+    </>
   )
 }
 
