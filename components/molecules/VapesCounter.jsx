@@ -11,12 +11,25 @@ import { useEffect, useState } from 'react'
 import { CountButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useParams } from 'next/navigation'
+import { withConfetii } from '@hooks'
 
-const VapesCounter = ({ id }) => {
-  const [counter, setCounter] = useState(0)
-  const { vapesPerBrand, vapesToBox, setGlobalCounter, setVapesToBox } =
-    useVapesContext()
+const VapesCounter = ({ id, fireConfetii }) => {
   const { id: brandId } = useParams()
+  const [counter, setCounter] = useState(0)
+  const {
+    vapesPerBrand,
+    vapesToBox,
+    globalQuantity,
+    setGlobalCounter,
+    setVapesToBox,
+  } = useVapesContext()
+
+  const shotConfetii = (counterGlobalVapes) => {
+    const cantVapes =
+      counterGlobalVapes.find((gc) => gc.brandId === brandId)?.globalCounter ||
+      0
+    cantVapes === globalQuantity && fireConfetii()
+  }
 
   const handleGlobalCounter = (prevGC, currentCount) => {
     const brandGC = prevGC.find((gc) => gc.brandId === brandId)
@@ -49,7 +62,11 @@ const VapesCounter = ({ id }) => {
   const increment = function increment() {
     const currentCount = counter + COUNTER_STEP
     setCounter(currentCount)
-    setGlobalCounter((prev) => handleGlobalCounter(prev, COUNTER_STEP))
+    setGlobalCounter((prev) => {
+      const res = handleGlobalCounter(prev, COUNTER_STEP)
+      shotConfetii(res)
+      return res
+    })
     setVapesToBox((prevVapes) => handleVapesQuantity(prevVapes, currentCount))
   }
 
@@ -81,4 +98,4 @@ const VapesCounter = ({ id }) => {
   )
 }
 
-export default VapesCounter
+export default withConfetii(VapesCounter)
