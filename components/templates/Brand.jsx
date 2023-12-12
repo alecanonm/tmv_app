@@ -81,7 +81,7 @@ const Brand = ({ params }) => {
           color='#46a832'
           className='container h-6 bg-slate-200'
         />
-        <span className='absolute right-[46%] bg-transparent backdrop-blur-lg top-5 text-black'>
+        <span className='absolute flex justify-center bg-transparent backdrop-blur-lg text-black'>
           <strong>
             {vapesCounter || 0}/{globalQuantity}
           </strong>
