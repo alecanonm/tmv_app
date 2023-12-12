@@ -82,7 +82,6 @@ const Brand = ({ params }) => {
           <Tag price={dataVapes?.prices[0]?.unit_price} />
         </div>
       </div>
-
       <CustomButton
         src={logoBox}
         alt='Box to vapes'

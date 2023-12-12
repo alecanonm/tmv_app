@@ -23,7 +23,7 @@ const VapeCard = ({ imageInfo, flavor, description, id }) => {
           />
         </Backdrop>
       )}
-      <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-lg p-4 w-[70vw] sm:w-auto'>
+      <article className='flex flex-col gap-2 justify-center items-center bg-white rounded-lg p-4 w-[70vw] sm:w-auto h-fit'>
         <VapesCounter id={id} />
         <div className='h-full flex justify-center items-center bg-brandGrayBG rounded-lg w-full min-w-[200px]'>
           <ImageWithFallback
