@@ -1,34 +1,41 @@
 import ContentLoader from 'react-content-loader'
 
+const ContentLoaderRect = ({ width, height, ratio }) => (
+  <ContentLoader
+    speed={2}
+    viewBox={`0 0 ${width} ${height}`}
+    backgroundColor='#c7c7c7'
+    foregroundColor='#ecebeb'
+  >
+    <rect x='0' y='0' rx={ratio} ry={ratio} width={width} height={height} />
+  </ContentLoader>
+)
+
 const HomeSkeleton = () => (
-  <div>
-    <section className='max-sm:hidden flex justify-center h-screen items-center'>
-      <ContentLoader
-        speed={2}
-        viewBox='0 0 600 200'
-        backgroundColor='#c7c7c7'
-        foregroundColor='#ecebeb'
-      >
-        <rect x='367' y='1' rx='11' ry='11' width='97' height='119' />
-        <rect x='117' y='23' rx='1' ry='1' width='189' height='7' />
-        <rect x='118' y='37' rx='1' ry='1' width='188' height='7' />
-        <rect x='118' y='49' rx='2' ry='2' width='189' height='7' />
-        <rect x='140' y='81' rx='10' ry='10' width='134' height='27' />
-        <rect x='211' y='92' rx='0' ry='0' width='0' height='2' />
-      </ContentLoader>
+  <div className='flex justify-center calc-h px-6'>
+    <section className='max-sm:hidden container flex justify-center items-center gap-8 h-full'>
+      <div className='w-[359px] flex flex-col justify-center items-center gap-10'>
+        <div className='w-full'>
+          <ContentLoaderRect width='135' height='13' ratio='5' />
+        </div>
+        <div className='w-[256px]'>
+          <ContentLoaderRect width='93' height='15' ratio='3' />
+        </div>
+      </div>
+      <div className='w-[600px]'>
+        <ContentLoaderRect width='20' height='15' ratio='2' />
+      </div>
     </section>
-    <section className='hidden max-sm:block pt-5'>
-      <ContentLoader
-        viewBox='0 0 380 420'
-        backgroundColor='#e3e3e3'
-        foregroundColor='#ecebeb'
-      >
-        <rect x='75' y='10' rx='2' ry='2' width='226' height='10' />
-        <rect x='76' y='26' rx='2' ry='2' width='225' height='9' />
-        <rect x='77' y='63' rx='6' ry='6' width='220' height='283' />
-        <rect x='76' y='42' rx='2' ry='2' width='225' height='9' />
-        <rect x='98' y='374' rx='10' ry='10' width='175' height='39' />
-      </ContentLoader>
+    <section className='hidden max-sm:flex container flex-col justify-center items-center gap-8'>
+      <div className='w-full'>
+        <ContentLoaderRect width='150' height='18' ratio='10' />
+      </div>
+      <div className='w-full'>
+        <ContentLoaderRect width='20' height='14' ratio='1' />
+      </div>
+      <div className='w-full'>
+        <ContentLoaderRect width='93' height='11' ratio='2' />
+      </div>
     </section>
   </div>
 )
