@@ -7,6 +7,24 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        bounce: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '40%': { transform: 'translateX(0)' },
+          '60%': { transform: 'translateX(10px)' },
+        },
+
+        bounceReverse: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '40%': { transform: 'translateX(0)' },
+          '60%': { transform: 'translateX(-10px)' },
+        },
+      },
+      animation: {
+        'bounce-horizontal': 'bounce 1s infinite',
+        'bounce-horizontal-reverse': 'bounceReverse 1s infinite',
+      },
+
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
