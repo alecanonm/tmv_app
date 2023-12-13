@@ -24,7 +24,7 @@ const withConfetii = (WrappedComponent) => {
       refAnimationInstance.current &&
         refAnimationInstance.current({
           ...opts,
-          origin: { y: 0.9 },
+          origin: { y: 0.85 },
           particleCount: Math.floor(200 * particleRatio),
         })
     }, [])
