@@ -13,7 +13,7 @@ const Cover = ({ id, title, imgId }) => {
   return (
     <article className='max-sm:flex-col flex gap-8 justify-center items-center text-white container mx-auto calc-h px-6'>
       <div className='flex flex-col gap-10'>
-        <h1 className='uppercase font-bold text-3xl md:text-4xl text-center '>
+        <h1 className='uppercase font-bold text-3xl md:text-4xl text-center'>
           {title}
         </h1>
         <button

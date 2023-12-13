@@ -21,7 +21,6 @@
     "primereact": "^10.1.1",
     "react": "^18",
     "react-canvas-confetti": "^1.4.0",
-    "react-content-loader": "^6.2.1",
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "sharp": "^0.33.0",
