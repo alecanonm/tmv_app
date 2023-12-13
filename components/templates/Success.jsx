@@ -5,6 +5,8 @@ import logo from '@public/assets/handVape.svg'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { withConfetii } from '@hooks'
+import arrow from '@public/assets/arrow.png'
+import leftArrow from '@public/assets/leftArrow.png'
 
 const Success = ({ fireConfetii }) => {
   useEffect(() => {
@@ -16,10 +18,16 @@ const Success = ({ fireConfetii }) => {
       <h1 className='text-2xl w-80 text-center sm:w-auto sm:text-4xl font-extrabold'>
         Gracias por comprar en Take My Vape
       </h1>
-      <figure>
+      <figure className='flex items-center justify-center gap-10'>
+        <Image src={arrow} width={50} className='animate-bounce-horizontal' />
         <a href='/'>
           <Image src={logo} alt='logo' className='w-28 sm:w-52 smd:h-52' />
         </a>
+        <Image
+          src={leftArrow}
+          width={50}
+          className='animate-bounce-horizontal-reverse'
+        />
       </figure>
       <div className='text-center flex flex-col gap-3 justify-center items-center'>
         <h3 className='text-xl w-80 sm:w-auto'>
