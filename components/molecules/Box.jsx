@@ -1,26 +1,13 @@
-'use client'
-
-import axios from 'axios'
 import Image from 'next/image'
 import boxEmpty from '@public/assets/empty-box.png'
-import { useState } from 'react'
 import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useBrandGlobalCounter } from '@hooks'
+import { StripeButton } from '@components/atoms'
 
 const Box = ({ showModal, setShowModal }) => {
-  const [loadingCheckout, setLoadingCheckout] = useState(false)
-  const { globalQuantity, vapesToBox } = useVapesContext()
-  const { brandId, brandGC } = useBrandGlobalCounter()
-
-  const handleCheckout = async () => {
-    setLoadingCheckout(true)
-    const res = await axios.post('/api/checkout', {
-      vapesToBox: vapesToBox.filter((vape) => vape.brand.id === brandId),
-    })
-    setLoadingCheckout(false)
-    window.location.assign(res.data.url)
-  }
+  const { globalQuantity } = useVapesContext()
+  const { brandGC } = useBrandGlobalCounter()
 
   return (
     <summary className='flex flex-col gap-4 justify-center items-center'>
@@ -38,21 +25,7 @@ const Box = ({ showModal, setShowModal }) => {
         >
           Cerrar
         </button>
-        {brandGC >= globalQuantity && (
-          <button
-            className='custom-button bg-blue-700 border-blue-700 text-md order-first md:order-last'
-            onClick={handleCheckout}
-          >
-            <div className='flex gap-2 justify-center w-full'>
-              {loadingCheckout && (
-                <div>
-                  <i className='pi pi-spin pi-spinner' />
-                </div>
-              )}
-              <div>Checkout</div>
-            </div>
-          </button>
-        )}
+        {brandGC >= globalQuantity && <StripeButton />}
       </div>
       {brandGC > 0 && brandGC < globalQuantity && (
         <p className='text-center text-red-400'>

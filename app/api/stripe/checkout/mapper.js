@@ -1,6 +1,12 @@
-import { CURRENCY_CODE, DIRECTUS_BASE_URL, TMV_BASE_URL } from './constants'
+import {
+  CURRENCY_CODE,
+  DIRECTUS_BASE_URL,
+  TAX_BEHAVIOR,
+  TAX_CODES,
+  TMV_BASE_URL,
+} from './constants'
 
-export const vapesToStripeOrderMapper = (vapes) => {
+export const vapesToStripeOrderMapper = (vapes, stripeTaxId) => {
   const brandId = vapes[0].brand.id
 
   const line_items = vapes.map((vape) => {
@@ -13,10 +19,13 @@ export const vapesToStripeOrderMapper = (vapes) => {
           name: vape.flavor.name,
           description: vape.description,
           images: imageId ? [imageUrl] : [],
+          tax_code: TAX_CODES.general_tangible_goods,
         },
         unit_amount_decimal: vape.price * 100,
+        tax_behavior: TAX_BEHAVIOR.exclusive,
       },
       quantity: vape.quantity,
+      tax_rates: [stripeTaxId],
     }
   })
 

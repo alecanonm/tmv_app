@@ -9,3 +9,8 @@ export const errorMessages = {
   mandatoryField: 'Este campo es obligatorio.',
   invalidFormat: 'El formato no es válido.',
 }
+
+export const NEXT_API_PATHS = {
+  stripeCheckout: '/api/stripe/checkout',
+  paypalCheckout: '/api/paypal/checkout',
+}

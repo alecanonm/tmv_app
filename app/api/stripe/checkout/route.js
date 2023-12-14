@@ -8,7 +8,14 @@ const stripe = new Stripe(STRIPE_SECRET_KEY)
 export async function POST(req) {
   try {
     const body = await req.json()
-    const stripeVapes = vapesToStripeOrderMapper(body.vapesToBox)
+    const stripeTax = await stripe.taxRates.create({
+      display_name: 'Stripe Tax',
+      inclusive: false,
+      percentage: 2.9,
+      description: 'Impuesto de Stripe',
+      country: 'ES',
+    })
+    const stripeVapes = vapesToStripeOrderMapper(body.vapesToBox, stripeTax.id)
     const session = await stripe.checkout.sessions.create(stripeVapes)
     return NextResponse.json(session)
   } catch (err) {
