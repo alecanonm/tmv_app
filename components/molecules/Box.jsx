@@ -3,7 +3,7 @@ import boxEmpty from '@public/assets/empty-box.png'
 import { OrderTable } from '@components/molecules'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useBrandGlobalCounter } from '@hooks'
-import { StripeButton } from '@components/atoms'
+import { PayPalButton } from '@components/atoms'
 
 const Box = ({ showModal, setShowModal }) => {
   const { globalQuantity } = useVapesContext()
@@ -18,14 +18,14 @@ const Box = ({ showModal, setShowModal }) => {
           <Image src={boxEmpty} width={150} height={150} alt='empty-box' />
         </figure>
       )}
-      <div className='flex flex-col md:flex-row gap-2 justify-center w-full'>
+      <div className='flex flex-col gap-2 justify-center items-center w-full'>
+        {brandGC >= globalQuantity && <PayPalButton />}
         <button
-          className='custom-button bg-red-700 border-red-700 text-md'
+          className='custom-button bg-red-700 border-red-700 text-md sm:w-[25rem]'
           onClick={() => setShowModal(!showModal)}
         >
           Cerrar
         </button>
-        {brandGC >= globalQuantity && <StripeButton />}
       </div>
       {brandGC > 0 && brandGC < globalQuantity && (
         <p className='text-center text-red-400'>
