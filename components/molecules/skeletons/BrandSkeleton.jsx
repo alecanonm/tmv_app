@@ -36,7 +36,7 @@ const BrandSkeleton = () => (
     </div>
     <SkeletonCircle
       size='60px'
-      className='absolute right-6 bottom-12 bg-[#c69976]'
+      className='absolute right-8 bottom-9 bg-[#c69976]'
     />
   </div>
 )

@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
-import logoBox from '@public/assets/box.png'
 import { GET_VAPES } from '@utils'
 import { VapeCard } from '@components/molecules'
 import { ProgressBar } from 'primereact/progressbar'
 import { useSuspenseQuery } from '@apollo/client'
-import { CustomButton } from '@components/atoms'
+import { BoxButton } from '@components/atoms'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useEffect } from 'react'
 import { Tag } from '@components/atoms/'
@@ -30,15 +29,15 @@ const BrandVapes = () => {
 
   return (
     <div
-      style={{ background: dataVapes.vapes[0]?.brand.color }}
+      style={{ background: dataVapes?.vapes[0]?.brand.color }}
       className='flex flex-col-reverse grow'
     >
       <summary className='flex flex-col gap-8 grow container mx-auto'>
         <h1 className='text-3xl md:text-4xl font-bold text-white text-center mt-8 px-[6rem] md:px-0'>
-          {dataVapes.vapes[0]?.brand.name}
+          {dataVapes?.vapes[0]?.brand.name}
         </h1>
         <section className='flex flex-wrap justify-center gap-5 grow mb-8'>
-          {dataVapes.vapes.map((vape) => {
+          {dataVapes?.vapes.map((vape) => {
             const imageInfo = vape?.images[0]?.vapes_images_id
             const flavor = vape?.flavor.name
             const description = vape?.description
@@ -70,14 +69,7 @@ const BrandVapes = () => {
           <Tag price={dataVapes?.prices[0]?.unit_price} />
         </div>
       </div>
-      <CustomButton
-        src={logoBox}
-        alt='Box to vapes'
-        width={90}
-        height={90}
-        xaxies='right-[7px]'
-        yaxies='bottom-8'
-      />
+      <BoxButton />
     </div>
   )
 }

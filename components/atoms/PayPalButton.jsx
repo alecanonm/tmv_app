@@ -7,8 +7,8 @@ import {
 } from '@paypal/react-paypal-js'
 import axios from 'axios'
 import { useVapesContext } from '@contexts/VapesContext'
-import { useBrandGlobalCounter } from '@hooks'
 import { NEXT_API_PATHS } from '@utils'
+import { useSearchParams } from 'next/navigation'
 
 const style = {
   color: 'blue',
@@ -28,7 +28,7 @@ async function createOrder(vapesToBox, brandId) {
   const res = await axios.post(NEXT_API_PATHS.paypalCheckout, {
     vapesToBox: vapesToBox.filter((vape) => vape.brand.id === brandId),
   })
-  console.log({ res })
+  console.log({ vapesToBox, brandId, res })
   return res.data.id
 }
 
@@ -43,7 +43,9 @@ function onCancel(data, actions) {
 const ButtonWrapper = () => {
   const [{ isPending }] = usePayPalScriptReducer()
   const { vapesToBox } = useVapesContext()
-  const { brandId } = useBrandGlobalCounter()
+  const searchParams = useSearchParams()
+
+  const brandId = searchParams.get('brandId')
 
   return isPending ? (
     <p>Loading PayPal buttons...</p>
@@ -65,7 +67,7 @@ const ButtonWrapper = () => {
 }
 
 const PayPalButton = () => (
-  <div className='w-full sm:w-[25rem]'>
+  <div className='w-full sm:w-[25rem] min-h-[100px] mt-10'>
     <PayPalScriptProvider
       options={{
         clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
