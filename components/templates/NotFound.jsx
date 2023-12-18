@@ -2,7 +2,7 @@ import logoShopping from '@public/assets/shopping.png'
 import { ImageWrappedByArrows } from '@components/atoms'
 
 const NotFound = () => (
-  <section className='flex flex-col justify-center items-center gap-10 h-screen container m-auto px-6'>
+  <section className='flex flex-col justify-center items-center gap-10 h-screen container mx-auto px-6'>
     <h1 className='text-3xl sm:text-5xl text-center'>
       <strong>Not found 404</strong>
     </h1>

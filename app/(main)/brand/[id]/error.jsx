@@ -10,8 +10,8 @@ export default function Error({ error }) {
   }, [error])
 
   return (
-    <section className='flex flex-col justify-center items-center h-screen gap-5 container mx-auto'>
-      <h1 className='text-3xl sm:text-5xl text-[#333]'>
+    <section className='flex flex-col justify-center items-center h-screen gap-5 container mx-auto px-6'>
+      <h1 className='text-3xl sm:text-5xl text-[#333] text-center'>
         <strong>¡Error vapeado!</strong>
       </h1>
       <div className='text-center'>

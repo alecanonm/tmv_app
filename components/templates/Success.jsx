@@ -12,7 +12,7 @@ const Success = ({ fireConfetii }) => {
   }, [])
 
   return (
-    <section className='flex flex-col justify-center items-center gap-10 h-screen container m-auto px-6'>
+    <section className='flex flex-col justify-center items-center gap-10 h-screen container mx-auto px-6'>
       <h1 className='text-2xl text-center sm:text-4xl font-extrabold'>
         Gracias por comprar en Take My Vape
       </h1>
