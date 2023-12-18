@@ -16,7 +16,7 @@ export default function Error({ error }) {
       </h1>
       <div className='text-center'>
         <p className='text-2xl sm:text-3xl'>
-          Algo mas denso que nuestros sabores premium se colo en el sistema
+          Algo mas denso que nuestros sabores premium se coló en el sistema
         </p>
         <p className='text-xl text-slate-600'>
           <em>Estamos purificando el sistema</em>
