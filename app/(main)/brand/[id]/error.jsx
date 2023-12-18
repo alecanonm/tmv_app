@@ -10,9 +10,19 @@ export default function Error({ error }) {
   }, [error])
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
+    <section className='flex flex-col justify-center items-center h-screen gap-5 container mx-auto'>
+      <h1 className='text-3xl sm:text-5xl text-[#333]'>
+        <strong>¡Error vapeado!</strong>
+      </h1>
+      <div className='text-center'>
+        <p className='text-2xl sm:text-3xl'>
+          Algo mas denso que nuestros sabores premium se colo en el sistema
+        </p>
+        <p className='text-xl text-slate-600'>
+          <em>Estamos purificando el sistema</em>
+        </p>
+      </div>
       <ImageWrappedByArrows image={logoShopping} />
-    </div>
+    </section>
   )
 }
