@@ -5,39 +5,27 @@ import {
   PayPalButtons,
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js'
-import axios from 'axios'
 import { useVapesContext } from '@contexts/VapesContext'
-import { NEXT_API_PATHS } from '@utils'
+import { vapesToPayPalOrderMapper } from '@utils'
 import { useSearchParams } from 'next/navigation'
 
 const style = {
-  color: 'blue',
+  color: 'silver',
   layout: 'vertical',
   disableMaxWidth: true,
-  shape: 'rect',
-  height: 32,
-  tagline: '',
+  shape: 'pill',
+  height: 48,
+  tagline: false,
   label: 'paypal',
 }
 
-function onClick(data, actions) {
-  console.log('order was clicked', data, actions)
+async function onApprove(_, actions) {
+  const order = await actions.order.capture()
+  if (order.id) window.location.assign('/success')
 }
 
-async function createOrder(vapesToBox, brandId) {
-  const res = await axios.post(NEXT_API_PATHS.paypalCheckout, {
-    vapesToBox: vapesToBox.filter((vape) => vape.brand.id === brandId),
-  })
-  console.log({ vapesToBox, brandId, res })
-  return res.data.id
-}
-
-function onApprove(data, actions) {
-  console.log('order was approved', data, actions)
-}
-
-function onCancel(data, actions) {
-  console.log('order was cancelled', data, actions)
+function onError(err) {
+  console.error(err)
 }
 
 const ButtonWrapper = () => {
@@ -55,13 +43,14 @@ const ButtonWrapper = () => {
       disabled={false}
       forceReRender={[style]}
       fundingSource={undefined}
-      onClick={onClick}
-      createOrder={(data, actions) => {
-        console.log('Crete order in progress', data, actions)
-        return createOrder(vapesToBox, brandId)
+      createOrder={(_, actions) => {
+        const orderProducts = vapesToBox.filter(
+          (vape) => vape.brand.id === brandId,
+        )
+        return actions.order.create(vapesToPayPalOrderMapper(orderProducts))
       }}
       onApprove={onApprove}
-      onCancel={onCancel}
+      onError={onError}
     />
   )
 }
@@ -81,3 +70,6 @@ const PayPalButton = () => (
 )
 
 export default PayPalButton
+
+// Tutorial: https://www.youtube.com/watch?v=sa9XtaKcSvo
+// Storybook: https://paypal.github.io/react-paypal-js/?path=/docs/example-paypalbuttons--default
