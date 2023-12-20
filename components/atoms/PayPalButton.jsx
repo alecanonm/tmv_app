@@ -8,6 +8,7 @@ import {
 import { useVapesContext } from '@contexts/VapesContext'
 import { vapesToPayPalOrderMapper } from '@utils'
 import { useSearchParams } from 'next/navigation'
+import { PayPalSkeleton } from '@components/molecules/skeletons'
 
 const style = {
   color: 'silver',
@@ -36,7 +37,7 @@ const ButtonWrapper = () => {
   const brandId = searchParams.get('brandId')
 
   return isPending ? (
-    <p>Loading PayPal buttons...</p>
+    <PayPalSkeleton />
   ) : (
     <PayPalButtons
       style={style}
