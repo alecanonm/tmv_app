@@ -1,18 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { getLocalStorage, LS_VAPES_TO_BOX } from '@utils'
+import { useState } from 'react'
 import { ImageWithFallback } from '@components/atoms'
 
-const VapesToPay = () => {
-  const [getVapesToBox, setVapesToBox] = useState([])
+const VapesToPay = ({ getVapesToBox }) => {
   const [showDescription, setShowDescription] = useState(
     Array(getVapesToBox.length).fill(false),
   )
-
-  useEffect(() => {
-    setVapesToBox(getLocalStorage(LS_VAPES_TO_BOX))
-  }, [])
 
   const toggleDescripcion = (index) => {
     setShowDescription((prevStates) => {
