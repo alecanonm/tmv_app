@@ -15,4 +15,5 @@ export const errorMessages = {
 export const NEXT_API_PATHS = {
   stripeCheckout: '/api/stripe/checkout',
   paypalCheckout: '/api/paypal/checkout',
+  sendEmail: '/api/send',
 }

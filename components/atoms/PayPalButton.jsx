@@ -6,9 +6,10 @@ import {
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js'
 import { useVapesContext } from '@contexts/VapesContext'
-import { vapesToPayPalOrderMapper } from '@utils'
+import { NEXT_API_PATHS, vapesToPayPalOrderMapper } from '@utils'
 import { useSearchParams } from 'next/navigation'
 import { PayPalSkeleton } from '@components/molecules/skeletons'
+import axios from 'axios'
 
 const style = {
   color: 'silver',
@@ -22,7 +23,10 @@ const style = {
 
 async function onApprove(_, actions) {
   const order = await actions.order.capture()
-  if (order.id) window.location.assign('/success')
+  if (order.id) {
+    await axios.post(NEXT_API_PATHS.sendEmail, { order })
+    window.location.assign('/success')
+  }
 }
 
 function onError(err) {

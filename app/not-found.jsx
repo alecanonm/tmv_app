@@ -1,4 +1,4 @@
-const { NotFound } = require('@components/templates')
+import { NotFound } from '@components/templates'
 
 export const metadata = {
   title: 'TMV | Not found',
