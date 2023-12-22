@@ -4,12 +4,10 @@ import Image from 'next/image'
 import logoBox from '@public/assets/box.png'
 import { useVapesContext } from '@contexts/VapesContext'
 import { useBrandGlobalCounter, withToast } from '@hooks'
-import { useEffect } from 'react'
 
 const BoxButton = ({ showWarning }) => {
   const { globalQuantity } = useVapesContext()
   const { brandId, brandGC } = useBrandGlobalCounter()
-  const { vapesToBox } = useVapesContext()
 
   const handleClick = () => {
     if (brandGC >= globalQuantity) {
@@ -24,10 +22,6 @@ const BoxButton = ({ showWarning }) => {
       )
     }
   }
-
-  useEffect(() => {
-    console.log({ vapesToBox })
-  }, [])
 
   return (
     <button
