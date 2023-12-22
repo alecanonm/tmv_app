@@ -2,17 +2,15 @@
 
 import { PayPalButton } from '@components/atoms'
 import { VapesToPay } from '@components/molecules'
-import { getLocalStorage, LS_VAPES_TO_BOX } from '@utils'
-import { useEffect, useState } from 'react'
+import { useFetchLocalStorage } from '@hooks'
+import { useVapesContext } from '@contexts/VapesContext'
 
 const Checkout = () => {
-  const [getVapesToBox, setVapesToBox] = useState([])
+  useFetchLocalStorage()
 
-  useEffect(() => {
-    setVapesToBox(getLocalStorage(LS_VAPES_TO_BOX))
-  }, [])
+  const { vapesToBox } = useVapesContext()
 
-  const totalToPay = getVapesToBox.reduce((acc, vape) => {
+  const totalToPay = vapesToBox.reduce((acc, vape) => {
     return acc + vape.quantity * vape.price
   }, 0)
 
@@ -27,7 +25,7 @@ const Checkout = () => {
           <h1 className='text-4xl grow-[0.3] self-center font-bold'>
             {`Total a pagar: ${totalToPay}€`}
           </h1>
-          <VapesToPay getVapesToBox={getVapesToBox} />
+          <VapesToPay getVapesToBox={vapesToBox} />
         </div>
         <div className='w-full flex flex-col justify-center overflow-y-auto'>
           <PayPalButton />
