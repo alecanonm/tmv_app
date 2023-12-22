@@ -5,9 +5,7 @@ import {
   PayPalButtons,
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js'
-import { useVapesContext } from '@contexts/VapesContext'
 import { NEXT_API_PATHS, vapesToPayPalOrderMapper } from '@utils'
-import { useSearchParams } from 'next/navigation'
 import { PayPalSkeleton } from '@components/molecules/skeletons'
 import axios from 'axios'
 
@@ -33,12 +31,8 @@ function onError(err) {
   console.error(err)
 }
 
-const ButtonWrapper = () => {
+const ButtonWrapper = ({ orderProducts }) => {
   const [{ isPending }] = usePayPalScriptReducer()
-  const { vapesToBox } = useVapesContext()
-  const searchParams = useSearchParams()
-
-  const brandId = searchParams.get('brandId')
 
   return isPending ? (
     <PayPalSkeleton />
@@ -49,9 +43,6 @@ const ButtonWrapper = () => {
       forceReRender={[style]}
       fundingSource={undefined}
       createOrder={(_, actions) => {
-        const orderProducts = vapesToBox.filter(
-          (vape) => vape.brand.id === brandId,
-        )
         return actions.order.create(vapesToPayPalOrderMapper(orderProducts))
       }}
       onApprove={onApprove}
@@ -60,7 +51,7 @@ const ButtonWrapper = () => {
   )
 }
 
-const PayPalButton = () => (
+const PayPalButton = ({ orderProducts }) => (
   <div className='w-full sm:w-[25rem] min-h-[100px] mt-10'>
     <PayPalScriptProvider
       options={{
@@ -69,7 +60,7 @@ const PayPalButton = () => (
         components: 'buttons',
       }}
     >
-      <ButtonWrapper />
+      <ButtonWrapper orderProducts={orderProducts} />
     </PayPalScriptProvider>
   </div>
 )
