@@ -12,17 +12,17 @@ const VapePay = ({ vape }) => {
   const totalToPay = vape.quantity * vape.price
 
   return (
-    <article className='flex gap-4'>
-      <div role='img' className='w-[15%]'>
+    <article className='flex flex-col md:flex-row gap-4'>
+      <div role='img' className='md:w-[15%]'>
         <ImageWithFallback
           src={imageUrl}
-          width={300}
-          height={200}
+          width={150}
+          height={150}
           alt={vape?.flavor?.name}
         />
       </div>
-      <section className='flex flex-col text-slate-400 w-[85%]'>
-        <div role='info' className='flex justify-between pb-2 text-white'>
+      <section className='flex flex-col gap-2 text-slate-400 md:w-[85%]'>
+        <div role='info' className='flex justify-between text-white'>
           <h2>
             <strong>{vape?.flavor?.name}</strong>
           </h2>
@@ -30,8 +30,8 @@ const VapePay = ({ vape }) => {
             <b>{totalToPay}€</b>
           </span>
         </div>
-        <p>Cantidad {vape.quantity}</p>
-        <summary className='flex flex-col gap-2'>
+        <summary className='flex flex-col'>
+          <p>Cantidad {vape.quantity}</p>
           <p
             className={cx({
               'overflow-hidden line-clamp-2': toggleDescripcion,
@@ -39,14 +39,18 @@ const VapePay = ({ vape }) => {
           >
             {vape.description}
           </p>
-          <span
-            className='cursor-pointer self-start text-yellow-600'
-            onClick={() => setToggleDescripcion(!toggleDescripcion)}
-          >
-            {toggleDescripcion ? 'Mostart más' : 'Mostrar menos'}
-          </span>
         </summary>
-        <p className='self-end'>{vape.price}€ unidad</p>
+        <div className='flex justify-between'>
+          <p>
+            <span
+              className='cursor-pointer self-start text-yellow-600'
+              onClick={() => setToggleDescripcion(!toggleDescripcion)}
+            >
+              {toggleDescripcion ? 'Mostart más' : 'Mostrar menos'}
+            </span>
+          </p>
+          <p className='self-end'>{vape.price}€ unidad</p>
+        </div>
       </section>
     </article>
   )

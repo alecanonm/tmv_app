@@ -16,15 +16,15 @@ const Checkout = () => {
 
   return (
     <section className='relative h-full'>
-      <div className='flex grow absolute inset-0'>
-        <div className='w-full bg-[#18222F]' />
+      <div className='hidden md:flex grow absolute inset-0'>
+        <div className='w-full bg-brandCheckout' />
         <div className='w-full' />
       </div>
-      <div className='container m-auto flex gap-40 grow absolute inset-0 h-screen'>
-        <div className='w-full flex flex-col justify-center items-end pr-5'>
+      <div className='md:container md:m-auto md:px-6 flex flex-col md:flex-row gap-2 md:gap-16 lg:gap-20 xl:gap-40 grow absolute inset-0 h-screen'>
+        <div className='w-full flex md:justify-end lg:pr-5 max-md:bg-brandCheckout max-md:px-6 max-md:pt-10'>
           <VapesToPay orderProducts={orderProducts} />
         </div>
-        <div className='w-full flex flex-col justify-center overflow-y-auto'>
+        <div className='w-full flex items-center md:overflow-y-auto order-first md:order-last max-md:px-6'>
           <PayPalButton orderProducts={orderProducts} />
         </div>
       </div>

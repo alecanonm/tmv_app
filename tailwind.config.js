@@ -34,6 +34,7 @@ module.exports = {
         brandButton: '#7474745d',
         brandGrayBG: '#dedcdc52',
         brandError: '#dc3545',
+        brandCheckout: '#18222F',
       },
     },
   },

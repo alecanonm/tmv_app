@@ -52,7 +52,7 @@ const ButtonWrapper = ({ orderProducts }) => {
 }
 
 const PayPalButton = ({ orderProducts }) => (
-  <div className='w-full sm:w-[25rem] min-h-[100px] mt-10'>
+  <div className='w-full md:w-[25rem] min-h-[100px] mt-10'>
     <PayPalScriptProvider
       options={{
         clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
