@@ -46,7 +46,7 @@ const VapePay = ({ vape }) => {
               className='cursor-pointer self-start text-yellow-600'
               onClick={() => setToggleDescripcion(!toggleDescripcion)}
             >
-              {toggleDescripcion ? 'Mostart más' : 'Mostrar menos'}
+              {toggleDescripcion ? 'Mostrar más' : 'Mostrar menos'}
             </span>
           </p>
           <p className='self-end'>{vape.price}€ unidad</p>
