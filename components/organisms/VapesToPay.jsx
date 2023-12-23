@@ -12,8 +12,8 @@ const VapesToPay = ({ orderProducts }) => {
         {`Total a pagar: ${totalToPay}€`}
       </h1>
       <div className='flex-grow flex flex-col gap-7 overflow-y-auto'>
-        {orderProducts.map((vape, index) => (
-          <VapePay key={vape.id} vape={vape} index={index} />
+        {orderProducts.map((vape) => (
+          <VapePay key={vape.id} vape={vape} />
         ))}
       </div>
     </section>
