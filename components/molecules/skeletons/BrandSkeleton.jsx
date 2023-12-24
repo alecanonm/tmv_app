@@ -29,7 +29,7 @@ const BrandSkeleton = () => (
       <div className='flex flex-wrap justify-center gap-5 grow mb-8'>
         {[...Array(12).keys()].map((n) => (
           <div key={n} className='w-[70vw] sm:w-[232px]'>
-            <SkeletonRect width='100%' height='354px' ratio='0.5rem' />
+            <SkeletonRect width='100%' height='354px' ratio='0.5rem ' />
           </div>
         ))}
       </div>
