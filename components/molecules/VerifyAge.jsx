@@ -29,7 +29,7 @@ const VerifyAge = () => {
             <Image src={logo} alt='logo' className='w-28 sm:w-52 smd:h-52' />
           </figure>
           <h2 className='text-xl sm:text-3xl font-semibold'>
-            Para ingrese a este sitio debes ser mayor de edad.
+            Para ingresar a este sitio debes ser mayor de edad.
           </h2>
           <p className='text-lg sm:text-xl text-slate-500'>
             Por favor verifica tu edad antes de entrar al sitio.
