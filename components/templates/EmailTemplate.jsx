@@ -53,7 +53,7 @@ const EmailTemplate = ({ orderId, fullName, items, total }) => (
         <p>El Equipo de Take My Vape</p>
         <ul>
           <li>
-            Teléfono: <a href='tel:+13135290855'>313-529-0855</a>
+            Teléfono: <a href='tel:+34613646137'>+34613646137</a>
           </li>
           <li>
             Email:{' '}
