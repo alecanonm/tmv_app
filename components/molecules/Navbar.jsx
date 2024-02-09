@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const navMotion = {
   visible: {
@@ -25,7 +26,6 @@ const itemMotion = {
 const Navbar = () => {
   const [toggled, setToggled] = useState(false)
   const [matches, setMatches] = useState(false)
-
   useEffect(() => {
     const handleResize = () => {
       setMatches(window.innerWidth <= 900)
@@ -41,12 +41,6 @@ const Navbar = () => {
     <nav className='flex items-center text-black font-semibold'>
       {!matches && (
         <ul className='flex gap-10'>
-          {/* <li className='hover:underline hover:underline-offset-8'>
-            <Link href='/'>Novedades</Link>
-          </li>
-          <li className='hover:underline hover:underline-offset-8'>
-            <Link href='/'>Marcas</Link>
-          </li> */}
           <li className='hover:underline hover:underline-offset-8'>
             <Link href='/about'>Sobre Nosotros</Link>
           </li>
@@ -79,7 +73,7 @@ const Navbar = () => {
         <motion.section
           animate={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
-          className='fixed flex bg-[#ffffff] z-10 bottom-0 left-0 w-full h-screen items-center justify-center'
+          className='fixed flex flex-col gap-24 bg-[#ffffff] z-10 bottom-0 left-0 w-full h-screen items-center justify-center'
         >
           <motion.ul
             variants={navMotion}
@@ -87,14 +81,6 @@ const Navbar = () => {
             initial='hidden'
             className='flex flex-col gap-12 text-lg'
           >
-            {/* <motion.li
-              onClick={() => {
-                setToggled((prev) => !prev)
-              }}
-              variants={itemMotion}
-            >
-              <Link href='/'> Marcas</Link>
-            </motion.li> */}
             <motion.li
               variants={itemMotion}
               onClick={() => {
@@ -111,6 +97,33 @@ const Navbar = () => {
             >
               <Link href='/about'>Sobre nosotros</Link>
             </motion.li>
+          </motion.ul>
+          <motion.ul className='flex gap-10'>
+            <li>
+              <a href='https://www.instagram.com/takemyvape?utm_source=qr'>
+                <Image
+                  src='/instagram.png'
+                  alt='instagram'
+                  height={25}
+                  width={25}
+                />
+              </a>
+            </li>
+            <li>
+              <a href='https://www.tiktok.com/@takemyvape?_t=8jispdHdodk&_r=1'>
+                <Image src='/tiktok.png' alt='tiktok' height={25} width={25} />
+              </a>
+            </li>
+            <li>
+              <a href='https://www.facebook.com/profile.php?id=100066701364823'>
+                <Image
+                  src='/facebook.png'
+                  alt='facebook'
+                  height={25}
+                  width={25}
+                />
+              </a>
+            </li>
           </motion.ul>
         </motion.section>
       )}
